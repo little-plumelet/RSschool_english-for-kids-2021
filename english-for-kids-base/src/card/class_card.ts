@@ -3,6 +3,9 @@ import IcardData from './interface-card-data';
 import defaultCardParams from './default_card_data';
 import Button from '../shared/shared_classes/class-button';
 import { updateCardParams, clearCardParams } from './auxiliary_functions';
+import CARD_CONSTANTS from '../shared/constants/card-constants';
+
+const { buttonImgAddres } = CARD_CONSTANTS;
 
 export default class Card {
   card: HTMLElement;
@@ -22,7 +25,7 @@ export default class Card {
   backText: HTMLElement;
 
   constructor(params: IcardData) {
-    const button = new Button();
+    const button = new Button(buttonImgAddres);
     updateCardParams(params);
     this.card = createDomElement(defaultCardParams.card);
     this.cardFront = createDomElement(defaultCardParams.cardFront);
