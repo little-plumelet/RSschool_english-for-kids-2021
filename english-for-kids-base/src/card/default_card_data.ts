@@ -27,7 +27,7 @@ const defaultCardParams = {
   },
   cardBack: {
     tegName: 'div',
-    classNames: ['card-back'],
+    classNames: ['card-back', 'hidden'],
     attributes: [[]],
   },
   backText: {
