@@ -1,6 +1,6 @@
 import createDomElement from '../shared/shared_functions/create-dom-element';
 import IcardData from './interface-card-data';
-import defaultCardParams from './default_card_data';
+import defaultCardParams from './default_card_data_html';
 import Button from '../shared/shared_classes/class-button';
 import { updateCardParams, clearCardParams } from './auxiliary_functions';
 import CARD_CONSTANTS from '../shared/constants/card-constants';

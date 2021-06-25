@@ -57,12 +57,12 @@
     }
 
     &-text {
+        min-width: 120px;
         padding: 5px 10px;
         @include card-title;
         text-transform: uppercase; 
         background-image: url('../public/images/smear.png');
         background-size: cover;
-       // background-repeat: no-repeat;
         background-position: center;
  
     }
