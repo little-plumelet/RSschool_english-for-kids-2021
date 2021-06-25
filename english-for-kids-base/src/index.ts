@@ -2,6 +2,7 @@ import './styles.scss';
 import Card from './card/class_card';
 import animalsData from './shared/input_data/cards_data/animals-cards-data';
 import SetOfCards from './set-of-cards/class_set_of_cards';
+import router from './router/create_router';
 // import IcardData from './card/interface-card-data';
 
 console.log('Hello World!');
