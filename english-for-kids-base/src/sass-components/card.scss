@@ -5,6 +5,8 @@
     text-align: center;
     perspective: 1000px;
     overflow: hidden;
+    background-color: rgb(208, 212, 208);
+    box-shadow: inset 0 0 100px rgb(90, 90, 90);
 
     .hidden {
         display: none;
@@ -35,6 +37,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url('../public/images/animals/blob.png');
+    background-size: cover;
 
     &-image {
         height: 90%;
@@ -53,8 +57,14 @@
     }
 
     &-text {
+        padding: 5px 10px;
         @include card-title;
-        text-transform: uppercase;  
+        text-transform: uppercase; 
+        background-image: url('../public/images/smear.png');
+        background-size: cover;
+       // background-repeat: no-repeat;
+        background-position: center;
+ 
     }
 
     .button-image {
