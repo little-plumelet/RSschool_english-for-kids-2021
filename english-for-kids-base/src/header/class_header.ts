@@ -1,3 +1,4 @@
+import BurgerMenuButton from '../shared/shared_classes/class_burger_menu_button';
 import CheckboxButton from '../shared/shared_classes/class_checkbox_button';
 import createDomElement from '../shared/shared_functions/create-dom-element';
 
@@ -29,7 +30,7 @@ export default class Header {
 
   headerWrapper: HTMLElement;
 
-  // burgerMenu: ;
+  burgerMenuButton: BurgerMenuButton;
 
   title: HTMLElement;
 
@@ -39,9 +40,11 @@ export default class Header {
     this.header = createDomElement(defaultHeaderParams.header);
     this.headerWrapper = createDomElement(defaultHeaderParams.wrapper);
     this.title = createDomElement(defaultHeaderParams.title);
+    this.burgerMenuButton = new BurgerMenuButton();
     this.switchButton = new CheckboxButton();
 
     this.header.appendChild(this.headerWrapper);
+    this.headerWrapper.appendChild(this.burgerMenuButton.container);
     this.headerWrapper.appendChild(this.title);
     this.headerWrapper.appendChild(this.switchButton.switchLabel);
   }

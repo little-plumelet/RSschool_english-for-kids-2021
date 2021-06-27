@@ -1,0 +1,50 @@
+// https://codepen.io/clever/pen/LNdbQm
+.burger-menu-input {
+    display: none;
+  }
+  
+.burger-menu-label {
+    color: #fff;
+    background-color: #ccc;
+    padding: 7px;
+    position: fixed;
+    
+    cursor: pointer;
+    transition: left .23s;
+    z-index: 3;
+    width: 35px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  .burger-menu-label span {
+    display: block;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0 0;
+    transition: all .1s linear .23s;
+    position: relative;
+  }
+  .burger-menu-label span.first {
+    margin-top: 0;
+  }
+  
+  .burger-menu-input:checked ~ .hidden-menu {
+    left: 0;
+    padding-top: 80px;
+  }
+  .burger-menu-input:checked ~ .burger-menu-label span.first {
+    transform: rotate(45deg);
+    top: 8px;
+    
+  }
+  .burger-menu-input:checked ~ .burger-menu-label span.second {
+    opacity: 0;
+  }
+  .burger-menu-input:checked ~ .burger-menu-label span.third {
+    transform: rotate(-45deg);
+    top: -8px;    
+  }
+
+  .activated {
+    text-decoration: underline;
+  }
