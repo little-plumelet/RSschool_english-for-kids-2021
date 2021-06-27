@@ -1,0 +1,81 @@
+.header {
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+//Toggle-slider https://html5css.ru/howto/howto_css_switch.php
+.switch-game {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch-game input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .switch-game-text {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  
+    @include text;
+    padding-top: 8px;
+    padding-left: 20px;
+    text-align: center;
+  }
+  
+  .switch-game-text:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .switch-game-text {
+    background-color: #2196F3;
+  
+    font-family: 'Cabin Sketch';
+    font-size: 15px;
+    padding-top: 8px;
+    text-align: left;
+  }
+  
+  input:focus + .switch-game-text {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .switch-game-text:before {
+    -webkit-transform: translateX(58px);
+    -ms-transform: translateX(58px);
+    transform: translateX(58px);
+  }
+  
+  /* Rounded sliders */
+  .switch-game-text.round {
+    border-radius: 34px;
+  }
+  
+  .switch-game-text.round:before {
+    border-radius: 50%;
+  }
+  

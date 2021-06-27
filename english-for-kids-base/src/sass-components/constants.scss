@@ -1,5 +1,11 @@
 @mixin card-title {
     font-family: 'Luckiest Guy', sans-serif;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
+};
+
+@mixin text {
+    font-family: 'Luckiest Guy', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
 };

@@ -1,8 +1,9 @@
 import './styles.scss';
-import Card from './card/class_card';
-import { animalsData, animalsCategoriesData } from './shared/input_data/cards_data/animals-cards-data';
-import SetOfCards from './set-of-cards/class_set_of_cards';
-import router from './router/create_router';
+import header from './header/create_header';
+// import Card from './card/class_card';
+import { animalsCategoriesData } from './shared/input_data/cards_data/animals-cards-data';
+// import SetOfCards from './set-of-cards/class_set_of_cards';
+// import router from './router/create_router';
 import IcategoryCardData from './category-card/interface_category_card_data';
 import CategoryCard from './category-card/class_category_card';
 // import IcardData from './card/interface-card-data';
@@ -34,6 +35,8 @@ const newSet = new SetOfCards(set);
 console.log(newSet);
 // document.body.appendChild(newSet.setContainer);
 */
+
+document.body.appendChild(header.header);
 
 // перенести функцию в подходящий файл и папку!!!!!!
 function createAllCategories(): void {
