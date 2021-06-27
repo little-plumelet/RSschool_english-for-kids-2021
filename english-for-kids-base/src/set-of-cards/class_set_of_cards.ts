@@ -1,5 +1,5 @@
 import Card from '../card/class_card';
-import IcardData from '../card/interface-card-data';
+import IcardData from '../card/interface_card_data';
 import defaultSetOfCardsParams from './default_set_of_cards_data_html';
 import createDomElement from '../shared/shared_functions/create-dom-element';
 

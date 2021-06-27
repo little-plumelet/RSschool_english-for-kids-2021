@@ -1,3 +1,16 @@
+const animalsCategoriesData = {
+  wildAnimals: {
+    categoryName: 'wildAnimals',
+    title: 'wild animals',
+    imgAddress: './public/images/animals/wild_animals/parrot.png',
+  },
+  tamedAnimals: {
+    categoryName: 'tamedAnimals',
+    title: 'tamed animals',
+    imgAddress: './public/images/animals/cat.png',
+  },
+};
+
 const animalsData = {
   wildAnimals: [
     {
@@ -65,4 +78,4 @@ const animalsData = {
   ],
 };
 
-export default animalsData;
+export { animalsCategoriesData, animalsData };

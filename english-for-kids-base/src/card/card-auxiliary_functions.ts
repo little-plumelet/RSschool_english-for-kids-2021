@@ -1,4 +1,4 @@
-import IcardData from './interface-card-data';
+import IcardData from './interface_card_data';
 import defaultCardParams from './default_card_data_html';
 
 function updateCardParams(params: IcardData): void {

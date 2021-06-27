@@ -1,7 +1,7 @@
 const defaultSetOfCardsParams = {
   container: {
     tegName: 'div',
-    classNames: ['cards-container'],
+    classNames: ['cards-container', 'hidden'],
     attributes: [[]],
   },
 };

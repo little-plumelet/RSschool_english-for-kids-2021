@@ -1,10 +1,13 @@
 import './styles.scss';
 import Card from './card/class_card';
-import animalsData from './shared/input_data/cards_data/animals-cards-data';
+import { animalsData, animalsCategoriesData } from './shared/input_data/cards_data/animals-cards-data';
 import SetOfCards from './set-of-cards/class_set_of_cards';
 import router from './router/create_router';
+import IcategoryCardData from './category-card/interface_category_card_data';
+import CategoryCard from './category-card/class_category_card';
 // import IcardData from './card/interface-card-data';
 
+/*
 console.log('Hello World!');
 const cardTmp = new Card(animalsData.tamedAnimals[0]);
 const cardTmp2 = new Card(animalsData.tamedAnimals[1]);
@@ -29,4 +32,22 @@ cardTmp.card.addEventListener('mouseleave', (e) => {
 const set = animalsData.wildAnimals;
 const newSet = new SetOfCards(set);
 console.log(newSet);
-document.body.appendChild(newSet.setContainer);
+// document.body.appendChild(newSet.setContainer);
+*/
+
+// перенести функцию в подходящий файл и папку!!!!!!
+function createAllCategories(): void {
+  const categories = Object.values(animalsCategoriesData);
+  const cardCategoryData = {} as IcategoryCardData;
+  console.log('categories =', categories);
+  categories.forEach((element) => {
+    console.log('elems =', element);
+    cardCategoryData.categoryName = element.categoryName;
+    cardCategoryData.title = element.title;
+    cardCategoryData.imgAddress = element.imgAddress;
+    const categoryCard = new CategoryCard(cardCategoryData);
+    document.body.appendChild(categoryCard.categoryContainer);
+  });
+}
+
+createAllCategories();
