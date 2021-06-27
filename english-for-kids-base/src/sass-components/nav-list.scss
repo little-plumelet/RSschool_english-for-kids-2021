@@ -1,0 +1,25 @@
+.nav-list-container {
+    display: block;
+    position: fixed;
+    list-style:none;
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    width: 320px;
+    background-color: rgb(79, 47, 47);
+    height: 100%;
+    top: 0;
+    left: -320px;
+    transition: left .3s;
+    z-index: 2;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.nav-item {
+    @include text;
+    font-size: 25px;
+    margin: 20px 0 20px 40px;
+    color: white;
+    cursor: pointer;
+}
