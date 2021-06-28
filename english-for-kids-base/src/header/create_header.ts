@@ -1,7 +1,7 @@
 import Header from './class_header';
-import CARD_CONSTANTS from '../shared/constants/card-constants';
+import CATEGORY_CONSTANTS from '../shared/constants/category_constants';
 
-const { categories } = CARD_CONSTANTS;
+const { categories } = CATEGORY_CONSTANTS;
 
 const header = new Header(categories);
 

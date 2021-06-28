@@ -1,12 +1,6 @@
 import './styles.scss';
 import header from './header/create_header';
-// import Card from './card/class_card';
-// import { categoriesData } from './shared/input_data/cards_data/cards-data';
-// import SetOfCards from './set-of-cards/class_set_of_cards';
-// import router from './router/create_router';
-import IcategoryCardData from './category-card/interface_category_card_data';
-import CategoryCard from './category-card/class_category_card';
-import CARD_CONSTANTS from './shared/constants/card-constants';
+import containerOfAllCategories from './set-of-categories/create_container_of_all_categories';
 // import IcardData from './card/interface-card-data';
 
 /*
@@ -36,27 +30,6 @@ const newSet = new SetOfCards(set);
 console.log(newSet);
 // document.body.appendChild(newSet.setContainer);
 */
-const { categories } = CARD_CONSTANTS;
+
 document.body.appendChild(header.header);
-
-// function createNavigationList() {
-//  // const navListOfCategories = new NavListOfCategories(categories);
-//   // header.burgerMenuButton.container.appendChild(navListOfCategories.ul);
-// }
-
-// перенести функцию в подходящий файл и папку!!!!!!
-function createAllCategories(): void {
-  const cardCategoryData = {} as IcategoryCardData;
-  console.log('categories =', categories);
-  // createNavigationList();
-  categories.forEach((element) => {
-    console.log('elems =', element);
-    cardCategoryData.categoryName = element.categoryName;
-    cardCategoryData.title = element.title;
-    cardCategoryData.imgAddress = element.imgAddress;
-    const categoryCard = new CategoryCard(cardCategoryData);
-    document.body.appendChild(categoryCard.categoryContainer);
-  });
-}
-
-createAllCategories();
+document.body.appendChild(containerOfAllCategories);

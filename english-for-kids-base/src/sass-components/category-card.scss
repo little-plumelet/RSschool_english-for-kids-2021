@@ -1,7 +1,10 @@
 .category-card {
-    cursor: pointer;
+  cursor: pointer;
+}
+.category-card.hidden {
+    display: none;
 }
 
 .category-card-front-text {
-    padding: 5px 50px;
+  padding: 5px 50px;
 }

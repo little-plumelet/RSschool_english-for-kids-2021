@@ -21,6 +21,8 @@ export default class CategoryCard {
 
   frontText: HTMLElement;
 
+  setOfCardsContainer: HTMLElement | null;
+
   setOfCards: Card[];
 
   categoryId: string;
@@ -37,6 +39,7 @@ export default class CategoryCard {
     this.frontImage = createDomElement(defaultCategoryCardParams.frontImage);
     this.frontText = createDomElement(defaultCategoryCardParams.frontText);
 
+    this.setOfCardsContainer = null;
     this.setOfCards = [];
 
     this.categoryContainer.setAttribute('id', this.categoryId);
@@ -50,6 +53,7 @@ export default class CategoryCard {
     this.createSetOfCardsOfCategory(params);
 
     clearCategoryCardParams();
+    this.revealCardsOfCategory();
   }
 
   createSetOfCardsOfCategory(params: IcategoryCardData): void {
@@ -57,6 +61,13 @@ export default class CategoryCard {
     const set = cardsData[Panel[setName as Panel]] as IcardData[];
     const newSet = new SetOfCards(set);
     this.setOfCards = newSet.setOfCards;
+    this.setOfCardsContainer = newSet.setContainer;
     this.categoryContainer.appendChild(newSet.setContainer);
+  }
+
+  revealCardsOfCategory(): void {
+    this.categoryContainer.addEventListener('click', () => {
+      (this.setOfCardsContainer as HTMLElement).classList.remove('hidden');
+    });
   }
 }
