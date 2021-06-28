@@ -21,6 +21,7 @@ export default class NavListOfCategories {
     this.ul = createDomElement(defaultNavListParams.ul);
     const categoriesLi = createDomElement(defaultNavListParams.categoriesLi);
     categoriesLi.innerHTML = 'All categories';
+    categoriesLi.classList.add('activated');
 
     this.ul.appendChild(categoriesLi);
     categories.forEach((element) => {

@@ -1,6 +1,7 @@
 import BurgerMenuButton from '../shared/shared_classes/class_burger_menu_button';
 import CheckboxButton from '../shared/shared_classes/class_checkbox_button';
 import createDomElement from '../shared/shared_functions/create-dom-element';
+import IcategoryCardData from '../category-card/interface_category_card_data';
 
 const defaultHeaderParams = {
   header: {
@@ -36,11 +37,11 @@ export default class Header {
 
   switchButton: CheckboxButton;
 
-  constructor() {
+  constructor(categories: IcategoryCardData[]) {
     this.header = createDomElement(defaultHeaderParams.header);
     this.headerWrapper = createDomElement(defaultHeaderParams.wrapper);
     this.title = createDomElement(defaultHeaderParams.title);
-    this.burgerMenuButton = new BurgerMenuButton();
+    this.burgerMenuButton = new BurgerMenuButton(categories);
     this.switchButton = new CheckboxButton();
 
     this.header.appendChild(this.headerWrapper);

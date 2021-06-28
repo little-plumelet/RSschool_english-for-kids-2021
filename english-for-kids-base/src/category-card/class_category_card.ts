@@ -6,7 +6,7 @@ import IcategoryCardData from './interface_category_card_data';
 import defaultCategoryCardParams from './default_category_card_data_html';
 import Panel from './category_card_enum';
 import { updateCategoryCardParams, clearCategoryCardParams } from './category_card_auxiliary_functions';
-import { animalsData } from '../shared/input_data/cards_data/animals-cards-data';
+import { cardsData } from '../shared/input_data/cards_data/cards-data';
 
 export default class CategoryCard {
   categoryContainer: HTMLElement;
@@ -54,7 +54,7 @@ export default class CategoryCard {
 
   createSetOfCardsOfCategory(params: IcategoryCardData): void {
     const setName = params.categoryName;
-    const set = animalsData[Panel[setName as Panel]] as IcardData[];
+    const set = cardsData[Panel[setName as Panel]] as IcardData[];
     const newSet = new SetOfCards(set);
     this.setOfCards = newSet.setOfCards;
     this.categoryContainer.appendChild(newSet.setContainer);

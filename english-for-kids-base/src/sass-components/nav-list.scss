@@ -23,3 +23,8 @@
     color: white;
     cursor: pointer;
 }
+
+.activated {
+    text-decoration: underline;
+    color: $highlight-nav-item;
+  }

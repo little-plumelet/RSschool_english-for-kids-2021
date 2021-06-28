@@ -11,7 +11,7 @@
     
     cursor: pointer;
     transition: left .23s;
-    z-index: 3;
+    z-index: 10;
     width: 35px;
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -28,23 +28,15 @@
     margin-top: 0;
   }
   
-  .burger-menu-input:checked ~ .hidden-menu {
-    left: 0;
-    padding-top: 80px;
-  }
-  .burger-menu-input:checked ~ .burger-menu-label span.first {
+  .burger-menu-input.checked ~ .burger-menu-label span.first {
     transform: rotate(45deg);
     top: 8px;
     
   }
-  .burger-menu-input:checked ~ .burger-menu-label span.second {
+  .burger-menu-input.checked ~ .burger-menu-label span.second {
     opacity: 0;
   }
-  .burger-menu-input:checked ~ .burger-menu-label span.third {
+  .burger-menu-input.checked ~ .burger-menu-label span.third {
     transform: rotate(-45deg);
     top: -8px;    
-  }
-
-  .activated {
-    text-decoration: underline;
   }

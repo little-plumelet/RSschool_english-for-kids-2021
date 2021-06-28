@@ -1,4 +1,9 @@
 import createDomElement from '../shared_functions/create-dom-element';
+import NavListOfCategories from '../../navigation-list-of-categories/class_nav_list_of_categories';
+import IcategoryCardData from '../../category-card/interface_category_card_data';
+import NAV_CONSTANTS from '../constants/nav_constants';
+
+const { listOfMenuOffset } = NAV_CONSTANTS;
 
 const defaultBurgerMFenuButtonParams = {
   container: {
@@ -46,7 +51,10 @@ export default class BurgerMenuButton {
 
   spanThird: HTMLElement;
 
-  constructor() {
+  listOfMenu: NavListOfCategories;
+
+  constructor(categories: IcategoryCardData[]) {
+    this.listOfMenu = new NavListOfCategories(categories);
     this.container = createDomElement(defaultBurgerMFenuButtonParams.container);
     this.label = createDomElement(defaultBurgerMFenuButtonParams.label);
     this.input = createDomElement(defaultBurgerMFenuButtonParams.input);
@@ -59,5 +67,20 @@ export default class BurgerMenuButton {
     this.label.appendChild(this.spanFirst);
     this.label.appendChild(this.spanSecond);
     this.label.appendChild(this.spanThird);
+    this.container.appendChild(this.listOfMenu.ul);
+
+    this.revealListOfMenu();
+  }
+
+  revealListOfMenu(): void {
+    this.label.addEventListener('click', () => {
+      if (this.input.classList.contains('checked')) {
+        this.input.classList.remove('checked');
+        this.listOfMenu.ul.setAttribute('style', `left: ${listOfMenuOffset}px`);
+      } else {
+        this.input.classList.add('checked');
+        this.listOfMenu.ul.setAttribute('style', 'left: 0px');
+      }
+    });
   }
 }

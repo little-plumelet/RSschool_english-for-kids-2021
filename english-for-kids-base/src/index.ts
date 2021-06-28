@@ -1,12 +1,12 @@
 import './styles.scss';
 import header from './header/create_header';
 // import Card from './card/class_card';
-import { animalsCategoriesData } from './shared/input_data/cards_data/animals-cards-data';
+// import { categoriesData } from './shared/input_data/cards_data/cards-data';
 // import SetOfCards from './set-of-cards/class_set_of_cards';
 // import router from './router/create_router';
 import IcategoryCardData from './category-card/interface_category_card_data';
 import CategoryCard from './category-card/class_category_card';
-import NavListOfCategories from './navigation-list-of-categories/class_nav_list_of_categories';
+import CARD_CONSTANTS from './shared/constants/card-constants';
 // import IcardData from './card/interface-card-data';
 
 /*
@@ -36,19 +36,19 @@ const newSet = new SetOfCards(set);
 console.log(newSet);
 // document.body.appendChild(newSet.setContainer);
 */
-const categories = Object.values(animalsCategoriesData);
+const { categories } = CARD_CONSTANTS;
 document.body.appendChild(header.header);
 
-function createNavigationList() {
-  const navListOfCategories = new NavListOfCategories(categories);
-  header.burgerMenuButton.container.appendChild(navListOfCategories.ul);
-}
+// function createNavigationList() {
+//  // const navListOfCategories = new NavListOfCategories(categories);
+//   // header.burgerMenuButton.container.appendChild(navListOfCategories.ul);
+// }
 
 // перенести функцию в подходящий файл и папку!!!!!!
 function createAllCategories(): void {
   const cardCategoryData = {} as IcategoryCardData;
   console.log('categories =', categories);
-  createNavigationList();
+  // createNavigationList();
   categories.forEach((element) => {
     console.log('elems =', element);
     cardCategoryData.categoryName = element.categoryName;
