@@ -1,13 +1,25 @@
 $highlight-nav-item: rgb(250, 185, 159);
 
+$cards-container-width: calc(100vw * 0.73);
+$card-width: calc(100vw * 0.7 / 4);
+$card-gap: calc((100vw * 0.73 - 100vw * 0.7) / 3);
+
+$card-text-bgrd-width: calc((100vw * 0.7 / 4) * 0.4);
+$card-button-rotate-width: calc((100vw * 0.7 / 4) * 0.1);
+$card-button-rotate-height: calc((100vw * 0.7 / 4) * 0.1 * 0.8);
+$card-button-rotate-margin: calc((100vw * 0.7 / 4) * 0.1 * 0.2);
+
+$card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 1px);
+$category-card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 5px);
+
 @mixin card-title {
-    font-family: 'Luckiest Guy', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-};
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: $category-card-font-size;
+  font-weight: 700;
+}
 
 @mixin text {
-    font-family: 'Luckiest Guy', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-};
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: $card-font-size;
+  font-weight: 700;
+} ;
