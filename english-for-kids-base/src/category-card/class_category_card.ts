@@ -7,6 +7,7 @@ import defaultCategoryCardParams from './default_category_card_data_html';
 import Panel from './category_card_enum';
 import { updateCategoryCardParams, clearCategoryCardParams } from './category_card_auxiliary_functions';
 import { cardsData } from '../shared/input_data/cards_data/cards-data';
+import setOfNavItems from '../navigation-menu/set_of_navigation_items';
 
 export default class CategoryCard {
   categoryContainer: HTMLElement;
@@ -53,7 +54,7 @@ export default class CategoryCard {
     this.createSetOfCardsOfCategory(params);
 
     clearCategoryCardParams();
-    this.revealCardsOfCategory();
+    this.listenToCardsOfCategory();
   }
 
   createSetOfCardsOfCategory(params: IcategoryCardData): void {
@@ -65,17 +66,21 @@ export default class CategoryCard {
     this.categoryContainer.appendChild(newSet.setContainer);
   }
 
-  revealCardsOfCategory(): void {
+  listenToCardsOfCategory(): void {
     this.categoryContainer.addEventListener('click', () => {
-      (this.setOfCardsContainer as HTMLElement).classList.remove('hidden');
+      this.revealCardsOfCategory();
+      setOfNavItems.forEach((element) => {
+        element.classList.remove('activated');
+        if (this.categoryId === element.id) element.classList.add('activated');
+      });
     });
   }
 
-  revealCardsOfCategoryOnNavigation(): void {
+  revealCardsOfCategory(): void {
     (this.setOfCardsContainer as HTMLElement).classList.remove('hidden');
   }
 
-  hideCardsOfCategoryOnNavigation(): void {
+  hideCardsOfCategory(): void {
     (this.setOfCardsContainer as HTMLElement).classList.add('hidden');
   }
 }

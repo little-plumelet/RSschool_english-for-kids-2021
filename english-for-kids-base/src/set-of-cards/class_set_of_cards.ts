@@ -8,7 +8,7 @@ export default class SetOfCards {
 
   setContainer: HTMLElement;
 
-  constructor(params: IcardData[]) { // params: IcardData
+  constructor(params: IcardData[]) {
     this.setContainer = createDomElement(defaultSetOfCardsParams.container);
     this.setOfCards = [];
     this.createSetOfCards(params);

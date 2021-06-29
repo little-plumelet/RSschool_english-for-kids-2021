@@ -14,6 +14,5 @@ export default function createsetOfCategories(setOfCategories: CategoryCard[]): 
     cardCategoryData.imgAddress = element.imgAddress;
     const categoryCard = new CategoryCard(cardCategoryData);
     setOfCategories.push(categoryCard);
-    // document.body.appendChild(categoryCard.categoryContainer);
   });
 }

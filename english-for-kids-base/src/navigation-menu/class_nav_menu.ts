@@ -3,6 +3,7 @@ import createDomElement from '../shared/shared_functions/create-dom-element';
 import setOfCategories from '../set-of-categories/set_of_categories';
 import BurgerMenuButton from '../shared/shared_classes/class_burger_menu_button';
 import NAV_CONSTANTS from '../shared/constants/nav_constants';
+import setOfNavItems from './set_of_navigation_items';
 
 const { listOfMenuOffset } = NAV_CONSTANTS;
 
@@ -36,7 +37,7 @@ export default class NavMenu {
 
   ul: HTMLElement;
 
-  setOfLi: HTMLElement[];
+  // setOfLi: HTMLElement[];
 
   burgerMenuButtonEl: HTMLElement;
 
@@ -45,7 +46,7 @@ export default class NavMenu {
   constructor(categories: IcategoryCardData[]) {
     this.container = createDomElement(defaultNavListParams.container);
     this.ul = createDomElement(defaultNavListParams.ul);
-    this.setOfLi = [];
+    // this.setOfLi = [];
     this.burgerMenuButton = new BurgerMenuButton();
     this.burgerMenuButtonEl = this.burgerMenuButton.container;
     const categoriesLi = createDomElement(defaultNavListParams.categoriesLi);
@@ -53,7 +54,8 @@ export default class NavMenu {
     categoriesLi.classList.add(liOfAllcategories.className);
     categoriesLi.setAttribute('id', liOfAllcategories.idAttribute);
 
-    this.setOfLi.push(categoriesLi);
+    // this.setOfLi.push(categoriesLi);
+    setOfNavItems.push(categoriesLi);
     this.ul.appendChild(categoriesLi);
 
     this.createLi(categories);
@@ -73,7 +75,8 @@ export default class NavMenu {
       li.classList.add('nav-item');
       li.innerHTML = element.title;
       this.ul.appendChild(li);
-      this.setOfLi.push(li);
+      // this.setOfLi.push(li);
+      setOfNavItems.push(li);
     });
   }
 
@@ -86,10 +89,8 @@ export default class NavMenu {
       this.ul.setAttribute('style', 'left: 0px');
     }
   }
-  // возможно это не нужная функция (для листенера на документ для скрытия меню по нажатию ВНЕ меню)
 
-  closeMenu(e: Event): void {
-    console.log('+++', e.target);
+  closeMenuTroughGlobalListener(e: Event): void {
     if (!(e.target as HTMLElement).closest('ul') && !(e.target as HTMLElement).closest('.burger-menu-container')) {
       if (this.burgerMenuButton.input.classList.contains('checked')) {
         this.showHideMenuList();
@@ -100,18 +101,19 @@ export default class NavMenu {
   listenToNav(): void {
     this.ul.addEventListener('click', (e) => {
       const id = (e.target as HTMLElement).getAttribute('id');
-      this.setOfLi.forEach((element) => {
+      // this.setOfLi.forEach((element)
+      setOfNavItems.forEach((element) => {
         element.classList.remove('activated');
         if (id === liOfAllcategories.idAttribute) {
           setOfCategories.forEach((elem) => {
             elem.categoryCard.classList.remove('hidden');
-            elem.hideCardsOfCategoryOnNavigation();
+            elem.hideCardsOfCategory();
           });
         } else {
           setOfCategories.forEach((elem) => {
             elem.categoryCard.classList.add('hidden');
-            elem.hideCardsOfCategoryOnNavigation();
-            if (elem.categoryId === id) elem.revealCardsOfCategoryOnNavigation();
+            elem.hideCardsOfCategory();
+            if (elem.categoryId === id) elem.revealCardsOfCategory();
           });
         }
         (e.target as HTMLElement).classList.add('activated');
@@ -125,6 +127,6 @@ export default class NavMenu {
     this.burgerMenuButton.label.addEventListener('click', () => {
       this.showHideMenuList();
     });
-    document.body.addEventListener('click', this.closeMenu.bind(this));
+    document.body.addEventListener('click', this.closeMenuTroughGlobalListener.bind(this));
   }
 }
