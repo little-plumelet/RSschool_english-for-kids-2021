@@ -37,6 +37,7 @@ export default class Card {
     this.frontImage = createDomElement(defaultCardParams.frontImage);
     this.frontText = createDomElement(defaultCardParams.frontText);
     this.frontButton = button.button;
+    this.frontButton.classList.add('button-rotate');
     this.cardBack = createDomElement(defaultCardParams.cardBack);
     this.backText = createDomElement(defaultCardParams.backText);
     this.audioSrc = params.audioAddres;
@@ -52,7 +53,8 @@ export default class Card {
     this.card.appendChild(this.cardBack);
 
     clearCardParams();
-    console.log(defaultCardParams);
+
+    this.listenToCard();
   }
 
   playAudio(): void {
@@ -71,5 +73,16 @@ export default class Card {
 
   showFront(): void {
     this.card.classList.remove('card-animated');
+  }
+
+  listenToCard(): void {
+    this.card.addEventListener('click', (e) => {
+      if (e.target === this.cardFront) this.playAudio();
+      if ((e.target as HTMLElement).closest('button') === this.frontButton) {
+        this.showBack();
+      }
+    });
+
+    this.card.addEventListener('mouseleave', () => { this.showFront(); });
   }
 }
