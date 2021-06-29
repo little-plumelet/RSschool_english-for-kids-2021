@@ -9,6 +9,38 @@ const categoriesData = {
     title: 'tamed animals',
     imgAddress: './public/images/animals/tamed_animals/cat.png',
   },
+  /*
+  actionsSetA: {
+    categoryName: 'actionsSetA',
+    title: 'actions (set A)',
+    imgAddress: './public/images/animals/wild_animals/parrot.png',
+  },
+  emotions: {
+    categoryName: 'emotions',
+    title: 'emotions',
+    imgAddress: './public/images/animals/tamed_animals/cat.png',
+  },
+  clothes: {
+    categoryName: 'clothes',
+    title: 'clothes',
+    imgAddress: './public/images/animals/wild_animals/parrot.png',
+  },
+  buildings: {
+    categoryName: 'buildings',
+    title: 'buildings',
+    imgAddress: './public/images/animals/tamed_animals/cat.png',
+  },
+  transport: {
+    categoryName: 'transport',
+    title: 'transport',
+    imgAddress: './public/images/animals/wild_animals/parrot.png',
+  },
+  actionSetB: {
+    categoryName: 'actionSetB',
+    title: 'action (Set B)',
+    imgAddress: './public/images/animals/tamed_animals/cat.png',
+  },
+  */
 };
 
 const cardsData = {

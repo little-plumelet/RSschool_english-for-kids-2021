@@ -1,7 +1,7 @@
-import BurgerMenuButton from '../shared/shared_classes/class_burger_menu_button';
-import CheckboxButton from '../shared/shared_classes/class_checkbox_button';
 import createDomElement from '../shared/shared_functions/create-dom-element';
 import IcategoryCardData from '../category-card/interface_category_card_data';
+import NavMenu from '../navigation-menu/class_nav_menu';
+import CheckboxButton from '../shared/shared_classes/class_checkbox_button';
 
 const defaultHeaderParams = {
   header: {
@@ -31,22 +31,22 @@ export default class Header {
 
   headerWrapper: HTMLElement;
 
-  burgerMenuButton: BurgerMenuButton;
+  burgerMenu: NavMenu;
 
   title: HTMLElement;
 
-  switchButton: CheckboxButton;
+  sliderButton: CheckboxButton;
 
   constructor(categories: IcategoryCardData[]) {
+    this.sliderButton = new CheckboxButton();
+    this.burgerMenu = new NavMenu(categories);
     this.header = createDomElement(defaultHeaderParams.header);
     this.headerWrapper = createDomElement(defaultHeaderParams.wrapper);
     this.title = createDomElement(defaultHeaderParams.title);
-    this.burgerMenuButton = new BurgerMenuButton(categories);
-    this.switchButton = new CheckboxButton();
 
     this.header.appendChild(this.headerWrapper);
-    this.headerWrapper.appendChild(this.burgerMenuButton.container);
+    this.headerWrapper.appendChild(this.burgerMenu.container);
     this.headerWrapper.appendChild(this.title);
-    this.headerWrapper.appendChild(this.switchButton.switchLabel);
+    this.headerWrapper.appendChild(this.sliderButton.switchLabel);
   }
 }

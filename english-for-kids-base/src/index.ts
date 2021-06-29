@@ -33,3 +33,13 @@ console.log(newSet);
 
 document.body.appendChild(header.header);
 document.body.appendChild(containerOfAllCategories);
+
+// document.body.addEventListener('click', (e) => {
+//   console.log('+++', e.target);
+//   if (!(e.target as HTMLElement).closest('ul')) {
+//     if (header.burgerMenu.burgerMenuButton.input.classList.contains('checked')) {
+//       header.burgerMenu.showHideMenuList();
+//       e.stopPropagation();
+//     }
+//   }
+// });
