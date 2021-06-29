@@ -70,4 +70,12 @@ export default class CategoryCard {
       (this.setOfCardsContainer as HTMLElement).classList.remove('hidden');
     });
   }
+
+  revealCardsOfCategoryOnNavigation(): void {
+    (this.setOfCardsContainer as HTMLElement).classList.remove('hidden');
+  }
+
+  hideCardsOfCategoryOnNavigation(): void {
+    (this.setOfCardsContainer as HTMLElement).classList.add('hidden');
+  }
 }
