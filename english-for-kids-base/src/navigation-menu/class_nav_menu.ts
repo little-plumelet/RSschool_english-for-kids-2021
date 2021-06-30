@@ -30,6 +30,11 @@ const defaultNavListParams = {
     classNames: ['nav-item', 'categories'],
     attributes: [[]],
   },
+  cover: {
+    tegName: 'div',
+    classNames: ['cover', 'hidden'],
+    attributes: [[]],
+  },
 };
 
 export default class NavMenu {
@@ -37,16 +42,16 @@ export default class NavMenu {
 
   ul: HTMLElement;
 
-  // setOfLi: HTMLElement[];
-
   burgerMenuButtonEl: HTMLElement;
 
   burgerMenuButton: BurgerMenuButton;
 
+  cover: HTMLElement;
+
   constructor(categories: IcategoryCardData[]) {
     this.container = createDomElement(defaultNavListParams.container);
+    this.cover = createDomElement(defaultNavListParams.cover);
     this.ul = createDomElement(defaultNavListParams.ul);
-    // this.setOfLi = [];
     this.burgerMenuButton = new BurgerMenuButton();
     this.burgerMenuButtonEl = this.burgerMenuButton.container;
     const categoriesLi = createDomElement(defaultNavListParams.categoriesLi);
@@ -54,7 +59,6 @@ export default class NavMenu {
     categoriesLi.classList.add(liOfAllcategories.className);
     categoriesLi.setAttribute('id', liOfAllcategories.idAttribute);
 
-    // this.setOfLi.push(categoriesLi);
     setOfNavItems.push(categoriesLi);
     this.ul.appendChild(categoriesLi);
 
@@ -62,9 +66,11 @@ export default class NavMenu {
 
     this.container.appendChild(this.burgerMenuButtonEl);
     this.container.appendChild(this.ul);
+    this.container.appendChild(this.cover);
 
     this.listenToNav();
     this.revealListOfMenu();
+    this.listenToCover();
   }
 
   createLi(categories: IcategoryCardData[]): void {
@@ -75,7 +81,6 @@ export default class NavMenu {
       li.classList.add('nav-item');
       li.innerHTML = element.title;
       this.ul.appendChild(li);
-      // this.setOfLi.push(li);
       setOfNavItems.push(li);
     });
   }
@@ -84,24 +89,17 @@ export default class NavMenu {
     if (this.burgerMenuButton.input.classList.contains('checked')) {
       this.burgerMenuButton.input.classList.remove('checked');
       this.ul.setAttribute('style', `left: ${listOfMenuOffset}px`);
+      this.cover.classList.add('hidden');
     } else {
       this.burgerMenuButton.input.classList.add('checked');
       this.ul.setAttribute('style', 'left: 0px');
-    }
-  }
-
-  closeMenuTroughGlobalListener(e: Event): void {
-    if (!(e.target as HTMLElement).closest('ul') && !(e.target as HTMLElement).closest('.burger-menu-container')) {
-      if (this.burgerMenuButton.input.classList.contains('checked')) {
-        this.showHideMenuList();
-      }
+      this.cover.classList.remove('hidden');
     }
   }
 
   listenToNav(): void {
     this.ul.addEventListener('click', (e) => {
       const id = (e.target as HTMLElement).getAttribute('id');
-      // this.setOfLi.forEach((element)
       setOfNavItems.forEach((element) => {
         element.classList.remove('activated');
         if (id === liOfAllcategories.idAttribute) {
@@ -127,6 +125,11 @@ export default class NavMenu {
     this.burgerMenuButton.label.addEventListener('click', () => {
       this.showHideMenuList();
     });
-    document.body.addEventListener('click', this.closeMenuTroughGlobalListener.bind(this));
+  }
+
+  listenToCover(): void {
+    this.cover.addEventListener('click', () => {
+      this.showHideMenuList();
+    });
   }
 }

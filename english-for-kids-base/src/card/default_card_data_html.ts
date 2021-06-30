@@ -36,6 +36,11 @@ const defaultCardParams = {
     attributes: [[]],
     result: '',
   },
+  gameMode: {
+    tegName: 'span',
+    classNames: [],
+    attributes: [[]],
+  },
 };
 
 export default defaultCardParams;

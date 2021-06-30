@@ -1,0 +1,10 @@
+.button-start-game {
+    width: $cards-container-width;
+    height: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.button-start-game.hidden {
+    display: none;
+}

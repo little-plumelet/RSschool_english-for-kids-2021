@@ -1,3 +1,18 @@
+.nav-container {
+    .cover {
+        position: absolute;
+        left: 320px;
+        width: calc(100vw - 320px);
+        height: 100%;
+        background-color: rgba(138, 96, 74, 0.5);
+        z-index: 1000;
+    }
+
+    .cover.hidden {
+        display: none;
+    }
+}
+
 .nav-list-container {
     display: block;
     position: fixed;

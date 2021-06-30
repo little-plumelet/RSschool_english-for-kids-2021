@@ -78,9 +78,11 @@ export default class CategoryCard {
 
   revealCardsOfCategory(): void {
     (this.setOfCardsContainer as HTMLElement).classList.remove('hidden');
+    (this.categoryContainer as HTMLElement).classList.add('active');
   }
 
   hideCardsOfCategory(): void {
     (this.setOfCardsContainer as HTMLElement).classList.add('hidden');
+    (this.categoryContainer as HTMLElement).classList.remove('active');
   }
 }

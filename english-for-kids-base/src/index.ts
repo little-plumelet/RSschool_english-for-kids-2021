@@ -1,6 +1,7 @@
 import './styles.scss';
 import header from './header/create_header';
 import containerOfAllCategories from './set-of-categories/create_container_of_all_categories';
+import game from './game-mod/create-class-game';
 // import IcardData from './card/interface-card-data';
 
 /*
@@ -34,12 +35,4 @@ console.log(newSet);
 document.body.appendChild(header.header);
 document.body.appendChild(containerOfAllCategories);
 
-// document.body.addEventListener('click', (e) => {
-//   console.log('+++', e.target);
-//   if (!(e.target as HTMLElement).closest('ul')) {
-//     if (header.burgerMenu.burgerMenuButton.input.classList.contains('checked')) {
-//       header.burgerMenu.showHideMenuList();
-//       e.stopPropagation();
-//     }
-//   }
-// });
+console.log(game);

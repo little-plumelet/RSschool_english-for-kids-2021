@@ -56,6 +56,10 @@
     text-align: center;
   }
 
+  .card-footer.hidden {
+    display: none;
+  }
+
   &-text {
     min-width: $card-text-bgrd-width;
     padding: 5px 10px;

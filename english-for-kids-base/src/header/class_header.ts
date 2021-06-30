@@ -2,6 +2,7 @@ import createDomElement from '../shared/shared_functions/create-dom-element';
 import IcategoryCardData from '../category-card/interface_category_card_data';
 import NavMenu from '../navigation-menu/class_nav_menu';
 import CheckboxButton from '../shared/shared_classes/class_checkbox_button';
+import sliderButton from '../shared/create_slider_button';
 
 const defaultHeaderParams = {
   header: {
@@ -38,7 +39,7 @@ export default class Header {
   sliderButton: CheckboxButton;
 
   constructor(categories: IcategoryCardData[]) {
-    this.sliderButton = new CheckboxButton();
+    this.sliderButton = sliderButton;
     this.burgerMenu = new NavMenu(categories);
     this.header = createDomElement(defaultHeaderParams.header);
     this.headerWrapper = createDomElement(defaultHeaderParams.wrapper);
