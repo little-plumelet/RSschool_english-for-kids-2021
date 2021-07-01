@@ -1,3 +1,12 @@
+const gameData = {
+  audioErrorAddress: './public/audio/error.mp3',
+  audioCorectAddress: './public/audio/correct.mp3',
+  audioFailureAddress: './public/audio/game-failure.mp3',
+  audioVictoryAddress: './public/audio/game-victory.mp3',
+  starFilledImgAddres: './public/images/star-filled.svg',
+  starEmptyImgAddress: './public/images/star-empty.svg',
+};
+
 const categoriesData = {
   wildAnimals: {
     categoryName: 'wildAnimals',
@@ -146,4 +155,4 @@ const cardsData = {
   ],
 };
 
-export { categoriesData, cardsData };
+export { categoriesData, cardsData, gameData };

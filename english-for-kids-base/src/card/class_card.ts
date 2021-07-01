@@ -5,7 +5,6 @@ import Button from '../shared/shared_classes/class_button';
 import { updateCardParams, clearCardParams } from './card-auxiliary_functions';
 import CARD_CONSTANTS from '../shared/constants/card-constants';
 import tmpAudioArray from '../game-mod/tmp_audio_array_for_game';
-import gameModWait from '../game-mod/constant_gameMod_wait';
 
 const { buttonImgAddres } = CARD_CONSTANTS;
 
@@ -32,11 +31,7 @@ export default class Card {
 
   gameMod: HTMLElement;
 
-  gameModAudioPlayed: boolean;
-
   gameModGessed: boolean;
-
-  // gameModWait: boolean;
 
   constructor(params: IcardData) {
     const button = new Button(buttonImgAddres);
@@ -44,6 +39,7 @@ export default class Card {
     updateCardParams(params);
 
     this.card = createDomElement(defaultCardParams.card);
+    this.card.classList.add(params.word);
     this.cardFront = createDomElement(defaultCardParams.cardFront);
     this.frontFooter = createDomElement(defaultCardParams.frontFooter);
     this.frontImage = createDomElement(defaultCardParams.frontImage);
@@ -55,9 +51,7 @@ export default class Card {
     this.backText = createDomElement(defaultCardParams.backText);
     this.audioSrc = params.audioAddres;
     this.gameMod = createDomElement(defaultCardParams.gameMode);
-    this.gameModAudioPlayed = false;
     this.gameModGessed = false;
-    // this.gameModWait = false;
 
     this.cardBack.appendChild(this.backText);
 
@@ -92,7 +86,7 @@ export default class Card {
     this.card.classList.remove('card-animated');
   }
 
-  gessFailed(): void {
+  gessSucceed(): void {
     this.card.classList.add('disabled');
     this.gameModGessed = true;
     tmpAudioArray.splice(tmpAudioArray.indexOf(this.audioSrc), 1);
@@ -100,16 +94,13 @@ export default class Card {
 
   listenToCard(): void {
     this.card.addEventListener('click', (e) => {
-      e.stopPropagation();
+      // e.stopPropagation();
       if (!this.gameMod.classList.contains('game-mode-true')) {
         if (e.target === this.cardFront) this.playAudio();
         if ((e.target as HTMLElement).closest('button') === this.frontButton) {
           this.showBack();
         }
-      } else if (this.gameModAudioPlayed) {
-        this.gessFailed();
       }
-      gameModWait.wait = false;
     });
 
     this.card.addEventListener('mouseleave', () => { this.showFront(); });

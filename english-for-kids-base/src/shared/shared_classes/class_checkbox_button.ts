@@ -26,10 +26,13 @@ export default class CheckboxButton {
 
   switchSpan: HTMLElement;
 
+  gameMod: boolean;
+
   constructor() {
     this.switchLabel = createDomElement(defaultCheckboxButtonParams.buttonLabel);
     this.switchInput = createDomElement(defaultCheckboxButtonParams.buttonInput);
     this.switchSpan = createDomElement(defaultCheckboxButtonParams.buttonText);
+    this.gameMod = false;
 
     this.switchLabel.appendChild(this.switchInput);
     this.switchLabel.appendChild(this.switchSpan);
