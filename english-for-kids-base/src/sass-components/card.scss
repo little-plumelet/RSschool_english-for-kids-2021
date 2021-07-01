@@ -7,10 +7,24 @@
   overflow: hidden;
   background-color: rgb(208, 212, 208);
   box-shadow: inset 0 0 100px rgb(90, 90, 90);
+  cursor: pointer;
 
   .hidden {
     display: none;
   }
+}
+.card.disabled {
+  pointer-events: none;
+}
+.card.disabled::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: $card-width;
+  height: $card-width;
+  display: block;
+  background-color: rgba(208, 212, 208, 0.8);
 }
 /*
 .card::after {

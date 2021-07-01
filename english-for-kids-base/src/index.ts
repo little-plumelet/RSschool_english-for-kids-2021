@@ -36,3 +36,14 @@ document.body.appendChild(header.header);
 document.body.appendChild(containerOfAllCategories);
 
 console.log(game);
+
+function getRandomIntInclusive(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min; // Максимум и минимум включаются
+}
+const numbers = new Set();
+while ([...numbers].length < 500) {
+  const a = getRandomIntInclusive(-2147483648, 2147483647);
+  numbers.add(a);
+}
+const str = [...numbers].join(' ');
+console.log(str);

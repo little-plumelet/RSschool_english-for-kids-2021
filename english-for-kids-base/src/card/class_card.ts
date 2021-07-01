@@ -6,7 +6,6 @@ import { updateCardParams, clearCardParams } from './card-auxiliary_functions';
 import CARD_CONSTANTS from '../shared/constants/card-constants';
 import tmpAudioArray from '../game-mod/tmp_audio_array_for_game';
 import gameModWait from '../game-mod/constant_gameMod_wait';
-import playGame from '../shared/shared_functions/play_game';
 
 const { buttonImgAddres } = CARD_CONSTANTS;
 
@@ -93,6 +92,12 @@ export default class Card {
     this.card.classList.remove('card-animated');
   }
 
+  gessFailed(): void {
+    this.card.classList.add('disabled');
+    this.gameModGessed = true;
+    tmpAudioArray.splice(tmpAudioArray.indexOf(this.audioSrc), 1);
+  }
+
   listenToCard(): void {
     this.card.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -102,9 +107,7 @@ export default class Card {
           this.showBack();
         }
       } else if (this.gameModAudioPlayed) {
-        this.card.classList.add('disabled');
-        this.gameModGessed = true;
-        tmpAudioArray.splice(tmpAudioArray.indexOf(this.audioSrc), 1);
+        this.gessFailed();
       }
       gameModWait.wait = false;
     });
