@@ -1,10 +1,14 @@
-.button-start-game {
+.button-start-game,
+.button-repeat {
     width: $cards-container-width;
     height: 20px;
     cursor: pointer;
     text-transform: uppercase;
+    background-color: salmon;
+    z-index: 1;
 }
 
 .button-start-game.hidden {
     display: none;
 }
+

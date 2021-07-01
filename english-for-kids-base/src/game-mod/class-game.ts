@@ -11,9 +11,11 @@ import Card from '../card/class_card';
 import shuffle from '../shared/shared_functions/shuffle_array';
 import GAME_CONSTANTS from '../shared/constants/game-constants';
 import { gameData } from '../shared/input_data/cards_data/cards-data';
-import defaultCardParams from '../card/default_card_data_html';
+import PopUpWinLose from '../pop-up/class_pop_up';
+import popUp from '../pop-up/create_pop_up';
+import setOfNavItems from '../navigation-menu/set_of_navigation_items';
 
-const { gameAudioDelay } = GAME_CONSTANTS;
+const { gameAudioDelay, popUpHideDelay } = GAME_CONSTANTS;
 
 const sliderButtonModes = {
   train: 'train',
@@ -23,13 +25,13 @@ const sliderButtonModes = {
 const defaultGameParams = {
   buttonStartGame: {
     tegName: 'button',
-    classNames: ['button-start-game', 'hidden'],
+    classNames: ['button', 'button-start-game', 'hidden'],
     attributes: [[]],
     result: 'start game',
   },
   buttonRepeatAudio: {
     tegName: 'button',
-    classNames: ['button-repeat', 'hidden'],
+    classNames: ['button', 'button-repeat', 'hidden'],
     attributes: [[]],
     result: 'Repeat',
   },
@@ -54,6 +56,14 @@ function playAudio(param: string): void {
   const audio = new Audio();
   audio.src = param;
   audio.autoplay = true;
+}
+
+function highlightNavItemOfAllCategories(): void {
+  setOfNavItems.forEach((element) => {
+    element.classList.remove('activated');
+  });
+  const navAllCategories = setOfNavItems.find((element) => element.getAttribute('id') === 'allCategories');
+  (navAllCategories as HTMLElement).classList.add('activated');
 }
 
 export default class Game {
@@ -85,9 +95,12 @@ export default class Game {
 
   gameVictoryAudioSrc: string;
 
+  popUp: PopUpWinLose;
+
   constructor() {
     this.sliderButton = sliderButton;
     this.setOfCategories = setOfCategories;
+    this.popUp = popUp;
     this.buttonStartGame = createDomElement(defaultGameParams.buttonStartGame);
     this.buttonRepeatAudio = createDomElement(defaultGameParams.buttonRepeatAudio);
     this.starContainer = createDomElement(defaultGameParams.starContainer);
@@ -104,6 +117,7 @@ export default class Game {
     containerOfAllCategories.appendChild(this.buttonStartGame);
     containerOfAllCategories.appendChild(this.buttonRepeatAudio);
     containerOfAllCategories.appendChild(this.starContainer);
+    containerOfAllCategories.appendChild(this.popUp.popUpContainer);
 
     this.playingCards = [];
 
@@ -192,10 +206,6 @@ export default class Game {
     });
   }
 
-  // drawStars(): void {
-
-  // }
-
   listenToPlayingCards(): void {
     this.playingCards.forEach((element) => {
       element.card.addEventListener('click', (e) => {
@@ -205,13 +215,20 @@ export default class Game {
           this.playingCards[gameModule.cardsIndex].gessSucceed();
           playAudio(this.correctAudioSrc);
           this.starContainer.appendChild(this.createStar(true));
+          setTimeout(() => this.playGame(), gameAudioDelay);
         } else {
           playAudio(this.errorAudioSrc);
           this.starContainer.appendChild(this.createStar(false));
         }
-        setTimeout(() => this.playGame(), gameAudioDelay);
       });
     });
+  }
+
+  playWord(): void {
+    if (this.playingCard) {
+      gameModule.cardsIndex = this.playingCards.indexOf(this.playingCard);
+      this.playingCards[gameModule.cardsIndex].playAudio();
+    }
   }
 
   playGame(): void {
@@ -221,10 +238,7 @@ export default class Game {
       (element) => element.audioSrc === tmpAudioArray[index],
     );
 
-    if (this.playingCard) {
-      gameModule.cardsIndex = this.playingCards.indexOf(this.playingCard);
-      this.playingCards[gameModule.cardsIndex].playAudio();
-    }
+    this.playWord();
 
     if (!tmpAudioArray.length) this.finishGame();
   }
@@ -236,10 +250,56 @@ export default class Game {
     });
 
     if (errorNbr) {
-      // вывести попап проигыша
+      playAudio(this.gameFailureAudioSrc);
+      this.popUp.popUpContainer.classList.remove('hidden');
+      this.popUp.popUpFailureContainer.classList.remove('hidden');
     } else {
-      // вывести попап выигрыша
+      playAudio(this.gameVictoryAudioSrc);
+      this.popUp.popUpContainer.classList.remove('hidden');
+      this.popUp.popUpVictoryContainer.classList.remove('hidden');
     }
-    // очистить игру
+    setTimeout(() => this.resetGame(), popUpHideDelay);
+  }
+
+  clearStarContainer(): void {
+    while (this.starContainer.firstChild) {
+      this.starContainer.firstChild.remove();
+    }
+    this.starContainer.classList.add('hidden');
+  }
+
+  hidePopUp(): void {
+    this.popUp.popUpContainer.classList.add('hidden');
+    this.popUp.popUpFailureContainer.classList.add('hidden');
+    this.popUp.popUpVictoryContainer.classList.add('hidden');
+    this.buttonRepeatAudio.classList.add('hidden');
+  }
+
+  returnDefaultState(): void {
+    this.playingCards.forEach((element) => {
+      element.card.classList.remove('disabled');
+    });
+    this.playingCardContainer = null;
+    this.playingCard = undefined;
+    this.playingCards = [];
+  }
+
+  showAllCategories(): void {
+    this.setOfCategories.forEach((element) => {
+      element.categoryContainer.classList.remove('active');
+      element.categoryContainer.classList.add('hidden');
+      element.setOfCardsContainer?.classList.add('hidden');
+      element.categoryCard.classList.remove('hidden');
+    });
+  }
+
+  resetGame(): void {
+    this.hidePopUp();
+    this.clearStarContainer();
+    this.returnDefaultState();
+    this.toggleSliderButton();
+    this.toggleGameModeForCategories();
+    this.showAllCategories();
+    highlightNavItemOfAllCategories();
   }
 }

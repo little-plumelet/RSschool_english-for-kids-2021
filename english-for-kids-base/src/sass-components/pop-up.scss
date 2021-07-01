@@ -1,0 +1,30 @@
+.pop-up-container-cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(47, 47, 49, 0.8);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pop-up-container-cover.hidden {
+    display: none;
+}
+
+.pop-up-container.hidden {
+  display: none;
+}
+
+.pop-up-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pop-up-victory,
+.pop-up-failure {
+  height: 100%;
+}
