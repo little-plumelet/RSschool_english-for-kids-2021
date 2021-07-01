@@ -9,6 +9,7 @@ import getRandomIntInclusive from '../shared/shared_functions/get_random_value';
 import IAnswer from './interfaces_for_answer';
 import gameModWait from './constant_gameMod_wait';
 import Card from '../card/class_card';
+import shuffle from '../shared/shared_functions/shuffle_array';
 
 const sliderButtonModes = {
   train: 'train',
@@ -17,9 +18,12 @@ const sliderButtonModes = {
 
 function fillTmpAudioArray(activeCategory: CategoryCard): void {
   const cards = activeCategory.setOfCards;
+  let tmpArray: string[] = [];
   cards.forEach((element) => {
-    tmpAudioArray.push(element.audioSrc);
+    tmpArray.push(element.audioSrc);
   });
+  tmpArray = shuffle(tmpArray);
+  tmpArray.map((e) => tmpAudioArray.push(e));
 }
 
 const defaultGameParams = {
