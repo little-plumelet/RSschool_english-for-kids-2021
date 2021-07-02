@@ -10,7 +10,9 @@ $card-button-rotate-height: calc((100vw * 0.7 / 4) * 0.1 * 0.8);
 $card-button-rotate-margin: calc((100vw * 0.7 / 4) * 0.1 * 0.2);
 
 $card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 1px);
+$category-card-font-text-container-height: calc(((100vw * 0.7 / 4) * 0.05 + 5px) * 2.4);
 $category-card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 5px);
+$pop-up-font-size: calc(100vw * 0.0012);
 
 @mixin card-title {
   font-family: 'Luckiest Guy', sans-serif;
@@ -21,5 +23,11 @@ $category-card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 5px);
 @mixin text {
   font-family: 'Luckiest Guy', sans-serif;
   font-size: $card-font-size;
+  font-weight: 700;
+} ;
+
+@mixin text-popUp {
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: $pop-up-font-size;
   font-weight: 700;
 } ;

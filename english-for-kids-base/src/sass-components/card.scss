@@ -51,7 +51,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('../public/images/animals/blob.png');
+  background: url('../public/images/blob_2.png');
   background-size: cover;
 
   &-image {
@@ -60,7 +60,7 @@
 
   .card-footer {
     position: absolute;
-    bottom: 1%;
+    top: 78%;
     left: 25%;
     right: 25%;
     display: flex;
@@ -116,6 +116,7 @@
   &-text {
     @include card-title;
     text-transform: uppercase;
+    z-index: 200;
   }
 }
 

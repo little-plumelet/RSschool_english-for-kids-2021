@@ -28,3 +28,23 @@
 .pop-up-failure {
   height: 100%;
 }
+
+.pop-up-container-failure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-up-failure-nbr {
+  padding: 10px 90px;
+  background-image: url('../public/images/smear.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 18%;
+  @include text;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}

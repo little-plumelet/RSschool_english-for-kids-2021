@@ -3,5 +3,7 @@
     width: $cards-container-width;
     display: grid;
     gap: $card-gap;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $card-gap;
     //grid-template-columns: 1fr 1fr 1fr 1fr;
 }

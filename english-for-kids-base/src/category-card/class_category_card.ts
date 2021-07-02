@@ -4,7 +4,7 @@ import IcardData from '../card/interface_card_data';
 import SetOfCards from '../set-of-cards/class_set_of_cards';
 import IcategoryCardData from './interface_category_card_data';
 import defaultCategoryCardParams from './default_category_card_data_html';
-import Panel from './category_card_enum';
+import Panel from '../shared/input_data/cards_data/category_card_enum';
 import { updateCategoryCardParams, clearCategoryCardParams } from './category_card_auxiliary_functions';
 import { cardsData } from '../shared/input_data/cards_data/cards-data';
 import setOfNavItems from '../navigation-menu/set_of_navigation_items';

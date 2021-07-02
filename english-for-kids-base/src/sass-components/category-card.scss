@@ -6,5 +6,10 @@
 }
 
 .category-card-front-text {
-  padding: 5px 50px;
+  min-height: $category-card-font-text-container-height;
+  padding: 10px 50px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  z-index: 200;
 }

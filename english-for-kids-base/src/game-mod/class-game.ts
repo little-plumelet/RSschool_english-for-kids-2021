@@ -97,6 +97,8 @@ export default class Game {
 
   popUp: PopUpWinLose;
 
+  errorsNbr: number;
+
   constructor() {
     this.sliderButton = sliderButton;
     this.setOfCategories = setOfCategories;
@@ -107,6 +109,7 @@ export default class Game {
 
     this.playingCardContainer = null;
     this.playingCard = undefined;
+    this.errorsNbr = 0;
     this.starFailureImgSrc = gameData.starEmptyImgAddress;
     this.starSuccessImgSrc = gameData.starFilledImgAddres;
     this.errorAudioSrc = gameData.audioErrorAddress;
@@ -206,6 +209,25 @@ export default class Game {
     });
   }
 
+  fillStarContainer(starType: boolean): void {
+    const star = this.createStar(starType);
+    let starWidth = 0;
+    const starContainerWidth = this.starContainer.getBoundingClientRect().width;
+    if (!this.starContainer.children.length) {
+      this.starContainer.appendChild(star);
+    } else if (this.starContainer.children.length) {
+      starWidth = (
+        this.starContainer.lastChild as HTMLElement).getBoundingClientRect().left
+        - (this.starContainer.firstChild as HTMLElement).getBoundingClientRect().left;
+    }
+    if ((starContainerWidth - 100) < starWidth) {
+      this.starContainer.firstChild?.remove();
+      this.starContainer.appendChild(star);
+    } else {
+      this.starContainer.appendChild(star);
+    }
+  }
+
   listenToPlayingCards(): void {
     this.playingCards.forEach((element) => {
       element.card.addEventListener('click', (e) => {
@@ -214,11 +236,12 @@ export default class Game {
                       HTMLElement).classList.contains(playedCardText)) {
           this.playingCards[gameModule.cardsIndex].gessSucceed();
           playAudio(this.correctAudioSrc);
-          this.starContainer.appendChild(this.createStar(true));
+          this.fillStarContainer(true);
           setTimeout(() => this.playGame(), gameAudioDelay);
         } else {
           playAudio(this.errorAudioSrc);
-          this.starContainer.appendChild(this.createStar(false));
+          this.fillStarContainer(false);
+          this.errorsNbr += 1;
         }
       });
     });
@@ -244,15 +267,11 @@ export default class Game {
   }
 
   finishGame(): void {
-    let errorNbr = 0;
-    this.starContainer.childNodes.forEach((element) => {
-      if ((element as HTMLElement).classList.contains('empty')) errorNbr += 1;
-    });
-
-    if (errorNbr) {
+    if (this.errorsNbr) {
       playAudio(this.gameFailureAudioSrc);
       this.popUp.popUpContainer.classList.remove('hidden');
       this.popUp.popUpFailureContainer.classList.remove('hidden');
+      this.popUp.errorNbr.innerText = `Errors you made: ${this.errorsNbr}.`;
     } else {
       playAudio(this.gameVictoryAudioSrc);
       this.popUp.popUpContainer.classList.remove('hidden');
