@@ -1,7 +1,7 @@
 const defaultCardParams = {
   card: {
     tegName: 'div',
-    classNames: ['card'],
+    classNames: ['card', 'card-word'],
     attributes: [[]],
   },
   cardFront: {

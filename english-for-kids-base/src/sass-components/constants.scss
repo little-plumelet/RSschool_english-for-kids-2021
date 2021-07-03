@@ -1,19 +1,21 @@
 $highlight-nav-item: rgb(250, 185, 159);
 
-$cards-container-width: calc(100vw * 0.73);
-$card-width: calc(100vw * 0.7 / 4);
-$card-gap: calc((100vw * 0.73 - 100vw * 0.7) / 3);
+$width: 1800;
 
-$card-text-bgrd-width: calc((100vw * 0.7 / 4) * 0.4);
-$card-button-rotate-width: calc((100vw * 0.7 / 4) * 0.1);
-$card-button-rotate-height: calc((100vw * 0.7 / 4) * 0.1 * 0.8);
-$card-button-rotate-margin: calc((100vw * 0.7 / 4) * 0.1 * 0.2);
+$cards-container-width: calc(#{$width}px * 0.73);
+$card-width: calc(#{$width}px * 0.7 / 4);
+$card-gap: calc((#{$width}px * 0.73 - #{$width}px * 0.7) / 3);
 
-$card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 1px);
-$footer-font-size: calc((100vw * 0.7 / 4) * 0.04 + 1px);
-$category-card-font-text-container-height: calc(((100vw * 0.7 / 4) * 0.05 + 5px) * 2.4);
-$category-card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 5px);
-$pop-up-font-size: calc(100vw * 0.0012);
+$card-text-bgrd-width: calc((#{$width}px * 0.7 / 4) * 0.4);
+$card-button-rotate-width: calc((#{$width}px * 0.7 / 4) * 0.1);
+$card-button-rotate-height: calc((#{$width}px * 0.7 / 4) * 0.1 * 0.8);
+$card-button-rotate-margin: calc((#{$width}px * 0.7 / 4) * 0.1 * 0.2);
+
+$card-font-size: calc((#{$width}px * 0.7 / 4) * 0.05 + 1px);
+$footer-font-size: calc((#{$width}px * 0.7 / 4) * 0.04 + 1px);
+$category-card-font-text-container-height: calc(((#{$width}px * 0.7 / 4) * 0.05 + 5px) * 2.4);
+$category-card-font-size: calc((#{$width}px * 0.7 / 4) * 0.05 + 5px);
+$pop-up-font-size: calc(#{$width}px * 0.0012);
 
 $game-color: salmon;
 
@@ -41,6 +43,7 @@ $game-color: salmon;
   font-size: $footer-font-size;
   font-weight: 700;
 };
+
 @mixin text-popUp {
   font-family: 'Luckiest Guy', sans-serif;
   font-size: $pop-up-font-size;

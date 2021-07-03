@@ -3,6 +3,7 @@
   margin-bottom: 10px;
   border-bottom: 3px solid #b2b1b1;
   background: url('../public/images/background_header.jpg');
+  background-position: center;
   display: flex;
   align-items: center;
 
@@ -84,4 +85,11 @@
   .switch-game-text.round:before {
     border-radius: 50%;
   }
-  
+
+  @media screen and (min-width: 320px) and (max-width: 739px) {
+    .header {
+      h1 {
+        display: none;
+      }
+    }
+  }

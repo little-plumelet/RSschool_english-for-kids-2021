@@ -2,9 +2,9 @@
     margin: 0 auto;
     width: $cards-container-width;
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
-    flex-grow: 2;
+    margin-bottom: 10px;
 }
 
 .category-container {
@@ -15,3 +15,37 @@
 .category-container:nth-child(4n+4) {
     margin-right: 0;
   }
+
+@media screen and (min-width: 1000px) and (max-width: 1350px) {
+  .all-categories-container {
+      width: calc(1350px * 0.73);
+  }  
+  
+  .category-container:nth-child(4n+4) {
+      margin-right: $card-gap;
+    }
+  
+  .category-container:nth-child(3n+3) {
+      margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 740px) and (max-width: 999px) {
+  .all-categories-container {
+      width: calc(1000px * 0.73);
+  }
+
+  .category-container:nth-child(2n+2) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 739px) {
+  .all-categories-container {
+      width: calc(100vw * 0.9);
+  }
+
+  .category-container {
+    margin-right: 0;
+  }
+}
