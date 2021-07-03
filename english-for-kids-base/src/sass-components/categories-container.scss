@@ -2,8 +2,9 @@
     margin: 0 auto;
     width: $cards-container-width;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
+    flex-grow: 2;
 }
 
 .category-container {

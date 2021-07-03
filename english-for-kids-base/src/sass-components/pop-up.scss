@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 10;
 }
 
 .pop-up-container-cover.hidden {
@@ -27,6 +28,7 @@
 .pop-up-victory,
 .pop-up-failure {
   height: 100%;
+  z-index: 20;
 }
 
 .pop-up-container-failure {

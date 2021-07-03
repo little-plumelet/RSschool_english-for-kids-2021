@@ -10,3 +10,18 @@
 :root {
     font-size: 10px;
 }
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding-top: 10px;
+    width: $cards-container-width;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,12 +1,10 @@
 .header {
-  min-height: calc(100vh * 0.1);
-  .wrapper {
-    margin: 0 auto;
-    padding-top: 20px;
-    width: $cards-container-width;
-    display: flex;
-    justify-content: space-between;
-  }
+  min-height: calc(100vh * 0.08);
+  margin-bottom: 10px;
+  border-bottom: 3px solid #b2b1b1;
+  background: url('../public/images/background_header.jpg');
+  display: flex;
+  align-items: center;
 
   h1 {
     @include h1;

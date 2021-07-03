@@ -19,7 +19,7 @@ const { gameAudioDelay, popUpHideDelay } = GAME_CONSTANTS;
 
 const sliderButtonModes = {
   train: 'train',
-  game: 'game',
+  game: 'play',
 };
 
 const defaultGameParams = {
