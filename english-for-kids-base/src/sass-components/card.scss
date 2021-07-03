@@ -78,7 +78,7 @@
     min-width: $card-text-bgrd-width;
     padding: 5px 10px;
     @include card-title;
-    text-transform: uppercase;
+    text-transform: lowercase;
     background-image: url('../public/images/smear.png');
     background-size: cover;
     background-position: center;
@@ -99,6 +99,14 @@
   border: 1px solid rgba(255, 255, 255, 0.657);
   z-index: 100;
   content: '';
+}
+
+.game-mod.card {
+  box-shadow: inset 0 0 100px $game-color;
+
+  .card-front::after {
+    border: 1px solid $game-color;
+  }
 }
 
 .card-back {

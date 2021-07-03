@@ -34,38 +34,21 @@ const categoriesData = {
     title: 'clothes',
     imgAddress: './public/images/clothes/dress.png',
   },
-  /*
-  actionsSetA: {
-    categoryName: 'actionsSetA',
-    title: 'actions (set A)',
-    imgAddress: './public/images/animals/wild_animals/parrot.png',
-  },
   emotions: {
     categoryName: 'emotions',
     title: 'emotions',
-    imgAddress: './public/images/animals/tamed_animals/cat.png',
+    imgAddress: './public/images/emotions/smile.png',
   },
-  clothes: {
-    categoryName: 'clothes',
-    title: 'clothes',
-    imgAddress: './public/images/animals/wild_animals/parrot.png',
+  actionsSetA: {
+    categoryName: 'actionsSetA',
+    title: 'actions (set A)',
+    imgAddress: './public/images/actions_set_a/fish.png',
   },
-  buildings: {
-    categoryName: 'buildings',
-    title: 'buildings',
-    imgAddress: './public/images/animals/tamed_animals/cat.png',
+  actionsSetB: {
+    categoryName: 'actionsSetB',
+    title: 'actions (set B)',
+    imgAddress: './public/images/actions_set_b/open.png',
   },
-  transport: {
-    categoryName: 'transport',
-    title: 'transport',
-    imgAddress: './public/images/animals/wild_animals/parrot.png',
-  },
-  actionSetB: {
-    categoryName: 'actionSetB',
-    title: 'action (Set B)',
-    imgAddress: './public/images/animals/tamed_animals/cat.png',
-  },
-  */
 };
 
 const cardsData = {
@@ -317,6 +300,156 @@ const cardsData = {
       imgAddress: './public/images/clothes/skirt.png',
       audioAddres: './public/audio/clothes/skirt.mp3',
       translation: 'юбка',
+    },
+  ],
+  emotions: [
+    {
+      word: 'smile',
+      imgAddress: './public/images/emotions/smile.png',
+      audioAddres: './public/audio/emotions/smilet.mp3',
+      translation: 'улыбка',
+    },
+    {
+      word: 'angry',
+      imgAddress: './public/images/emotions/angry.png',
+      audioAddres: './public/audio/emotions/angry.mp3',
+      translation: 'сердитый',
+    },
+    {
+      word: 'surprised',
+      imgAddress: './public/images/emotions/surprised.png',
+      audioAddres: './public/audio/emotions/surprised.mp3',
+      translation: 'удивленный',
+    },
+    {
+      word: 'sad',
+      imgAddress: './public/images/emotions/sad.png',
+      audioAddres: './public/audio/emotions/sad.mp3',
+      translation: 'грустный',
+    },
+    {
+      word: 'tired',
+      imgAddress: './public/images/emotions/tired.png',
+      audioAddres: './public/audio/emotions/tired.mp3',
+      translation: 'уставший',
+    },
+    {
+      word: 'laugh',
+      imgAddress: './public/images/emotions/laugh.png',
+      audioAddres: './public/audio/emotions/laugh.mp3',
+      translation: 'смех',
+    },
+    {
+      word: 'scared',
+      imgAddress: './public/images/emotions/scared.png',
+      audioAddres: './public/audio/emotions/scared.mp3',
+      translation: 'напуганный',
+    },
+    {
+      word: 'happy',
+      imgAddress: './public/images/emotions/happy.png',
+      audioAddres: './public/audio/emotions/happy.mp3',
+      translation: 'счастливый',
+    },
+  ],
+  actionsSetA: [
+    {
+      word: 'fish',
+      imgAddress: './public/images/actions_set_a/fish.png',
+      audioAddres: './public/audio/actions_set_a/fish.mp3',
+      translation: 'ловить рыбу',
+    },
+    {
+      word: 'dive',
+      imgAddress: './public/images/actions_set_a/dive.png',
+      audioAddres: './public/audio/actions_set_a/dive.mp3',
+      translation: 'нырять',
+    },
+    {
+      word: 'dance',
+      imgAddress: './public/images/actions_set_a/dance.png',
+      audioAddres: './public/audio/actions_set_a/dance.mp3',
+      translation: 'танцевать',
+    },
+    {
+      word: 'draw',
+      imgAddress: './public/images/actions_set_a/draw.png',
+      audioAddres: './public/audio/actions_set_a/draw.mp3',
+      translation: 'рисовать',
+    },
+    {
+      word: 'jump',
+      imgAddress: './public/images/actions_set_a/jump.png',
+      audioAddres: './public/audio/actions_set_a/jump.mp3',
+      translation: 'прыгать',
+    },
+    {
+      word: 'cry',
+      imgAddress: './public/images/actions_set_a/cry.png',
+      audioAddres: './public/audio/actions_set_a/cry.mp3',
+      translation: 'плакать',
+    },
+    {
+      word: 'fly',
+      imgAddress: './public/images/actions_set_a/fly.png',
+      audioAddres: './public/audio/actions_set_a/fly.mp3',
+      translation: 'летать',
+    },
+    {
+      word: 'hug',
+      imgAddress: './public/images/actions_set_a/hug.png',
+      audioAddres: './public/audio/actions_set_a/hug.mp3',
+      translation: 'обнимать',
+    },
+  ],
+  actionsSetB: [
+    {
+      word: 'open',
+      imgAddress: './public/images/actions_set_b/open.png',
+      audioAddres: './public/audio/actions_set_b/open.mp3',
+      translation: 'открывать',
+    },
+    {
+      word: 'play',
+      imgAddress: './public/images/actions_set_b/play.png',
+      audioAddres: './public/audio/actions_set_b/play.mp3',
+      translation: 'играть',
+    },
+    {
+      word: 'point',
+      imgAddress: './public/images/actions_set_b/point.png',
+      audioAddres: './public/audio/actions_set_b/point.mp3',
+      translation: 'указывать',
+    },
+    {
+      word: 'ride',
+      imgAddress: './public/images/actions_set_b/ride.png',
+      audioAddres: './public/audio/actions_set_b/ride.mp3',
+      translation: 'ездить',
+    },
+    {
+      word: 'run',
+      imgAddress: './public/images/actions_set_b/run.png',
+      audioAddres: './public/audio/actions_set_b/run.mp3',
+      translation: 'бегать',
+    },
+    {
+      word: 'sing',
+      imgAddress: './public/images/actions_set_b/sing.png',
+      audioAddres: './public/audio/actions_set_b/sing.mp3',
+      translation: 'петь',
+    },
+    {
+      word: 'skip',
+      imgAddress: './public/images/actions_set_b/skip.png',
+      audioAddres: './public/audio/actions_set_b/skip.mp3',
+      translation: 'прыгать/пропускать',
+    },
+    {
+      word: 'swim',
+      imgAddress: './public/images/actions_set_b/swim.png',
+      audioAddres: './public/audio/actions_set_b/swim.mp3',
+      translation: 'плавать',
     },
   ],
 };

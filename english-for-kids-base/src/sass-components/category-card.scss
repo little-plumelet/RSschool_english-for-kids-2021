@@ -1,6 +1,7 @@
 .category-card {
   cursor: pointer;
 }
+
 .category-card.hidden {
     display: none;
 }
@@ -13,3 +14,4 @@
   background-position: top;
   z-index: 200;
 }
+

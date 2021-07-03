@@ -1,9 +1,17 @@
 .header {
-    .wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+  min-height: calc(100vh * 0.1);
+  .wrapper {
+    margin: 0 auto;
+    padding-top: 20px;
+    width: $cards-container-width;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1 {
+    @include h1;
+    text-transform: capitalize;
+  }
 }
 
 //Toggle-slider https://html5css.ru/howto/howto_css_switch.php
@@ -34,9 +42,11 @@
     transition: .4s;
   
     @include text;
+    font-size: 15px;
     padding-top: 8px;
     padding-left: 20px;
     text-align: center;
+    text-transform: uppercase;
   }
   
   .switch-game-text:before {
@@ -52,16 +62,14 @@
   }
   
   input:checked + .switch-game-text {
-    background-color: #2196F3;
-  
-    font-family: 'Cabin Sketch';
-    font-size: 15px;
-    padding-top: 8px;
+    background-color: $game-color;
     text-align: left;
+    text-transform: uppercase;
+    padding-left: 12px;
   }
   
   input:focus + .switch-game-text {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px $game-color;
   }
   
   input:checked + .switch-game-text:before {

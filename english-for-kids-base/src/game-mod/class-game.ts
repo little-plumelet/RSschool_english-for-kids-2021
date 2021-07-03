@@ -125,6 +125,7 @@ export default class Game {
     this.playingCards = [];
 
     this.gameModInit();
+    this.listenToCategoriesCard();
     this.listenToStartGameButton();
     this.listenToRepeatButton();
   }
@@ -145,10 +146,19 @@ export default class Game {
     if (this.sliderButton.switchSpan.innerHTML === sliderButtonModes.train) {
       this.sliderButton.switchSpan.innerHTML = sliderButtonModes.game;
       this.sliderButton.gameMod = true;
+      this.toggleGameModeForCategories(true);
     } else {
       this.sliderButton.switchSpan.innerHTML = sliderButtonModes.train;
+      (this.sliderButton.switchInput as HTMLInputElement).checked = false;
       this.sliderButton.gameMod = false;
+      this.toggleGameModeForCategories(false);
+      this.buttonRepeatAudio.classList.add('hidden');
     }
+  }
+
+  toggleStartGameButton(): void {
+    if (this.sliderButton.gameMod) this.buttonStartGame.classList.remove('hidden');
+    else this.buttonStartGame.classList.add('hidden');
   }
 
   toggleGameModeForCards(setOfCards: Card[]): void {
@@ -157,29 +167,47 @@ export default class Game {
         elem.frontFooter.classList.add('hidden');
         elem.gameMod.classList.add('game-mode-true');
       });
-      this.buttonStartGame.classList.remove('hidden');
     } else {
       setOfCards.forEach((elem) => {
         elem.frontFooter.classList.remove('hidden');
         elem.gameMod.classList.remove('game-mode-true');
       });
-      this.buttonStartGame.classList.add('hidden');
     }
   }
 
-  toggleGameModeForCategories(): void {
+  toggleGameModeForCategories(init: boolean): void {
     this.setOfCategories.forEach((element) => {
       const { setOfCards } = element;
       this.toggleGameModeForCards(setOfCards);
     });
+    if (init) {
+      this.setOfCategories.forEach((element) => {
+        element.categoryCard.classList.add('game-mod');
+      });
+    } else {
+      this.setOfCategories.forEach((element) => {
+        element.categoryCard.classList.remove('game-mod');
+      });
+    }
   }
 
   gameModInit(): void {
     this.sliderButton.switchLabel.addEventListener('click', (e) => {
+      const activatedCategory = setOfNavItems.find((element) => element.classList.contains('activated'));
       if (e.target === this.sliderButton.switchInput) {
         this.toggleSliderButton();
-        this.toggleGameModeForCategories();
+        if (!(activatedCategory?.getAttribute('id') === 'allCategories')) {
+          this.toggleStartGameButton();
+        }
       }
+    });
+  }
+
+  listenToCategoriesCard(): void {
+    this.setOfCategories.forEach((element) => {
+      element.categoryCard.addEventListener('click', () => {
+        if (this.sliderButton.gameMod) this.toggleStartGameButton();
+      });
     });
   }
 
@@ -232,16 +260,18 @@ export default class Game {
     this.playingCards.forEach((element) => {
       element.card.addEventListener('click', (e) => {
         const playedCardText = this.playingCard?.frontTextString;
-        if (playedCardText && (e.currentTarget as
-                      HTMLElement).classList.contains(playedCardText)) {
-          this.playingCards[gameModule.cardsIndex].gessSucceed();
-          playAudio(this.correctAudioSrc);
-          this.fillStarContainer(true);
-          setTimeout(() => this.playGame(), gameAudioDelay);
-        } else {
-          playAudio(this.errorAudioSrc);
-          this.fillStarContainer(false);
-          this.errorsNbr += 1;
+        if (this.buttonStartGame.classList.contains('hidden')) {
+          if (playedCardText && (e.currentTarget as
+                        HTMLElement).classList.contains(playedCardText)) {
+            this.playingCards[gameModule.cardsIndex].gessSucceed();
+            playAudio(this.correctAudioSrc);
+            this.fillStarContainer(true);
+            setTimeout(() => this.playGame(), gameAudioDelay);
+          } else {
+            playAudio(this.errorAudioSrc);
+            this.fillStarContainer(false);
+            this.errorsNbr += 1;
+          }
         }
       });
     });
@@ -317,7 +347,8 @@ export default class Game {
     this.clearStarContainer();
     this.returnDefaultState();
     this.toggleSliderButton();
-    this.toggleGameModeForCategories();
+    this.toggleGameModeForCategories(false);
+    this.toggleStartGameButton();
     this.showAllCategories();
     highlightNavItemOfAllCategories();
   }

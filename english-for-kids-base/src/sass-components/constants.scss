@@ -14,6 +14,15 @@ $category-card-font-text-container-height: calc(((100vw * 0.7 / 4) * 0.05 + 5px)
 $category-card-font-size: calc((100vw * 0.7 / 4) * 0.05 + 5px);
 $pop-up-font-size: calc(100vw * 0.0012);
 
+$game-color: salmon;
+
+
+@mixin h1 {
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+
 @mixin card-title {
   font-family: 'Luckiest Guy', sans-serif;
   font-size: $category-card-font-size;
@@ -24,10 +33,10 @@ $pop-up-font-size: calc(100vw * 0.0012);
   font-family: 'Luckiest Guy', sans-serif;
   font-size: $card-font-size;
   font-weight: 700;
-} ;
+};
 
 @mixin text-popUp {
   font-family: 'Luckiest Guy', sans-serif;
   font-size: $pop-up-font-size;
   font-weight: 700;
-} ;
+};

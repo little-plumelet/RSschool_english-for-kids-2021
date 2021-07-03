@@ -1,9 +1,16 @@
 .all-categories-container {
     margin: 0 auto;
     width: $cards-container-width;
-    display: grid;
-    gap: $card-gap;
-    grid-template-columns: repeat(4, 1fr);
-    gap: $card-gap;
-    //grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+.category-container {
+    margin-right: $card-gap;
+    margin-bottom: $card-gap;
+}
+
+.category-container:nth-child(4n+4) {
+    margin-right: 0;
+  }
