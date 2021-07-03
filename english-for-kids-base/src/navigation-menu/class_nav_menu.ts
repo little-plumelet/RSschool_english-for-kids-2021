@@ -42,6 +42,8 @@ export default class NavMenu {
 
   ul: HTMLElement;
 
+  liOfAllCategories: HTMLElement;
+
   burgerMenuButtonEl: HTMLElement;
 
   burgerMenuButton: BurgerMenuButton;
@@ -54,13 +56,13 @@ export default class NavMenu {
     this.ul = createDomElement(defaultNavListParams.ul);
     this.burgerMenuButton = new BurgerMenuButton();
     this.burgerMenuButtonEl = this.burgerMenuButton.container;
-    const categoriesLi = createDomElement(defaultNavListParams.categoriesLi);
-    categoriesLi.innerHTML = liOfAllcategories.result;
-    categoriesLi.classList.add(liOfAllcategories.className);
-    categoriesLi.setAttribute('id', liOfAllcategories.idAttribute);
+    this.liOfAllCategories = createDomElement(defaultNavListParams.categoriesLi);
+    this.liOfAllCategories.innerHTML = liOfAllcategories.result;
+    this.liOfAllCategories.classList.add(liOfAllcategories.className);
+    this.liOfAllCategories.setAttribute('id', liOfAllcategories.idAttribute);
 
-    setOfNavItems.push(categoriesLi);
-    this.ul.appendChild(categoriesLi);
+    setOfNavItems.push(this.liOfAllCategories);
+    this.ul.appendChild(this.liOfAllCategories);
 
     this.createLi(categories);
 
@@ -103,18 +105,20 @@ export default class NavMenu {
       setOfNavItems.forEach((element) => {
         element.classList.remove('activated');
         if (id === liOfAllcategories.idAttribute) {
+          (e.target as HTMLElement).classList.add('activated');
           setOfCategories.forEach((elem) => {
             elem.categoryCard.classList.remove('hidden');
             elem.hideCardsOfCategory();
           });
-        } else {
+        } else if (id) {
+          (e.target as HTMLElement).classList.add('activated');
           setOfCategories.forEach((elem) => {
             elem.categoryCard.classList.add('hidden');
             elem.hideCardsOfCategory();
             if (elem.categoryId === id) elem.revealCardsOfCategory();
           });
         }
-        (e.target as HTMLElement).classList.add('activated');
+        this.liOfAllCategories.classList.add('activated');
       });
       this.burgerMenuButton.input.classList.add('checked');
       this.showHideMenuList();

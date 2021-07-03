@@ -128,6 +128,7 @@ export default class Game {
     this.listenToCategoriesCard();
     this.listenToStartGameButton();
     this.listenToRepeatButton();
+    this.listenToNavList();
   }
 
   createStar(filledStar: boolean): HTMLElement {
@@ -207,6 +208,14 @@ export default class Game {
     this.setOfCategories.forEach((element) => {
       element.categoryCard.addEventListener('click', () => {
         if (this.sliderButton.gameMod) this.toggleStartGameButton();
+      });
+    });
+  }
+
+  listenToNavList(): void {
+    setOfNavItems.forEach((element) => {
+      element.addEventListener('click', () => {
+        if (this.sliderButton.gameMod) this.resetGame();
       });
     });
   }
