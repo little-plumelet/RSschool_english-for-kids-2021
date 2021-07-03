@@ -110,6 +110,8 @@ export default class NavMenu {
             elem.categoryCard.classList.remove('hidden');
             elem.hideCardsOfCategory();
           });
+          this.burgerMenuButton.input.classList.add('checked');
+          this.showHideMenuList();
         } else if (id) {
           (e.target as HTMLElement).classList.add('activated');
           setOfCategories.forEach((elem) => {
@@ -117,11 +119,10 @@ export default class NavMenu {
             elem.hideCardsOfCategory();
             if (elem.categoryId === id) elem.revealCardsOfCategory();
           });
-        }
-        this.liOfAllCategories.classList.add('activated');
+          this.burgerMenuButton.input.classList.add('checked');
+          this.showHideMenuList();
+        } else this.liOfAllCategories.classList.add('activated');
       });
-      this.burgerMenuButton.input.classList.add('checked');
-      this.showHideMenuList();
     });
   }
 

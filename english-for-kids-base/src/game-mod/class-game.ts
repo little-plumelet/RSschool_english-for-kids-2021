@@ -129,6 +129,7 @@ export default class Game {
     this.listenToStartGameButton();
     this.listenToRepeatButton();
     this.listenToNavList();
+    this.listenToCards();
   }
 
   createStar(filledStar: boolean): HTMLElement {
@@ -229,7 +230,6 @@ export default class Game {
         this.playingCardContainer = activeCategory.categoryContainer;
         this.playingCards = activeCategory.setOfCards;
 
-        this.listenToPlayingCards();
         fillTmpAudioArray(activeCategory);
 
         this.buttonStartGame.classList.add('hidden');
@@ -265,23 +265,27 @@ export default class Game {
     }
   }
 
-  listenToPlayingCards(): void {
-    this.playingCards.forEach((element) => {
-      element.card.addEventListener('click', (e) => {
-        const playedCardText = this.playingCard?.frontTextString;
-        if (this.buttonStartGame.classList.contains('hidden')) {
-          if (playedCardText && (e.currentTarget as
-                        HTMLElement).classList.contains(playedCardText)) {
-            this.playingCards[gameModule.cardsIndex].gessSucceed();
-            playAudio(this.correctAudioSrc);
-            this.fillStarContainer(true);
-            setTimeout(() => this.playGame(), gameAudioDelay);
-          } else {
-            playAudio(this.errorAudioSrc);
-            this.fillStarContainer(false);
-            this.errorsNbr += 1;
-          }
-        }
+  playWithCards(e: Event): void {
+    const playedCardText = this.playingCard?.frontTextString;
+    if (this.buttonStartGame.classList.contains('hidden')) {
+      if (playedCardText && (e.currentTarget as
+                    HTMLElement).classList.contains(playedCardText)) {
+        this.playingCards[gameModule.cardsIndex].gessSucceed();
+        playAudio(this.correctAudioSrc);
+        this.fillStarContainer(true);
+      } else {
+        playAudio(this.errorAudioSrc);
+        this.fillStarContainer(false);
+        this.errorsNbr += 1;
+      }
+      setTimeout(() => this.playGame(), gameAudioDelay);
+    }
+  }
+
+  listenToCards(): void {
+    this.setOfCategories.forEach((element) => {
+      element.setOfCards.forEach((elem) => {
+        elem.card.addEventListener('click', this.playWithCards.bind(this));
       });
     });
   }
@@ -334,6 +338,7 @@ export default class Game {
   }
 
   returnDefaultState(): void {
+    this.errorsNbr = 0;
     this.playingCards.forEach((element) => {
       element.card.classList.remove('disabled');
     });
@@ -352,6 +357,7 @@ export default class Game {
   }
 
   resetGame(): void {
+    if (tmpAudioArray.length) while (tmpAudioArray.length) tmpAudioArray.pop();
     this.hidePopUp();
     this.clearStarContainer();
     this.returnDefaultState();
