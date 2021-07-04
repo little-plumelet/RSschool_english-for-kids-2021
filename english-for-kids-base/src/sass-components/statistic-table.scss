@@ -1,0 +1,53 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+    background: url('../public/images/background_header.jpg');
+    background-position: center;
+    text-align: center;
+    padding: 20px 0;
+    border-collapse: collapse;
+    font-size: 15px;
+  
+    .arrow {
+        margin-left: 10px;
+        height: 30px;
+    }
+  
+    .arrow-hidden {
+      visibility: hidden;
+    }
+}
+
+.train-click:hover,
+.game-click:hover,
+.error-click:hover,
+.percent:hover {
+  cursor: pointer;
+}
+
+
+  
+td {
+  background:rgba(90, 90, 90, 0.8);
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+  color: white;
+  padding: 5px 0;
+}
+
+.nbr {
+  width: 100px;
+}
+
+tr:hover {
+  background: rgba(250, 128, 114, 0.5);
+  td:hover {
+    background: rgba(250, 128, 114, 0.7);
+  }
+}
+  

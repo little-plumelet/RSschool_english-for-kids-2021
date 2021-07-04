@@ -22,6 +22,8 @@ export default class CategoryCard {
 
   frontText: HTMLElement;
 
+  frontTextStr: string;
+
   setOfCardsContainer: HTMLElement | null;
 
   setOfCards: Card[];
@@ -39,6 +41,7 @@ export default class CategoryCard {
     this.frontFooter = createDomElement(defaultCategoryCardParams.categoryCardfrontFooter);
     this.frontImage = createDomElement(defaultCategoryCardParams.frontImage);
     this.frontText = createDomElement(defaultCategoryCardParams.frontText);
+    this.frontTextStr = params.title;
 
     this.setOfCardsContainer = null;
     this.setOfCards = [];

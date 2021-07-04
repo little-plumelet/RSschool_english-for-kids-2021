@@ -1,0 +1,12 @@
+.statistics-container {
+    width: $cards-container-width;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+}
+
+.statistics-button-container {
+    display: flex;
+    justify-content: space-between;
+}

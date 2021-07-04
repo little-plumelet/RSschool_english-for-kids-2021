@@ -14,6 +14,8 @@ import { gameData } from '../shared/input_data/cards_data/cards-data';
 import PopUpWinLose from '../pop-up/class_pop_up';
 import popUp from '../pop-up/create_pop_up';
 import setOfNavItems from '../navigation-menu/set_of_navigation_items';
+import { getLineFromLocalStorage, updateLineInLocalStorage } from '../statistics/functions_for_local_storage';
+import setOfStatisticTableLines from '../statistics/setOfStatisticTableLines';
 
 const { gameAudioDelay, popUpHideDelay } = GAME_CONSTANTS;
 
@@ -267,17 +269,40 @@ export default class Game {
 
   playWithCards(e: Event): void {
     const playedCardText = this.playingCard?.frontTextString;
-    if (this.buttonStartGame.classList.contains('hidden')) {
+    if (this.buttonStartGame.classList.contains('hidden') && !this.buttonRepeatAudio.classList.contains('hidden')) {
+      let trueNbr = Number(getLineFromLocalStorage(String(playedCardText)).gameClicks);
+      let falseNbr = Number(getLineFromLocalStorage(String(playedCardText)).errorsNbr);
       if (playedCardText && (e.currentTarget as
                     HTMLElement).classList.contains(playedCardText)) {
+        trueNbr += 1;
+        this.playingCards[gameModule.cardsIndex].cardStatisticParams.gameClicks = String(trueNbr);
         this.playingCards[gameModule.cardsIndex].gessSucceed();
         playAudio(this.correctAudioSrc);
         this.fillStarContainer(true);
       } else {
+        falseNbr += 1;
         playAudio(this.errorAudioSrc);
         this.fillStarContainer(false);
         this.errorsNbr += 1;
+        this.playingCards[gameModule.cardsIndex].cardStatisticParams.errorsNbr = String(falseNbr);
       }
+      // const { percent } = getLineFromLocalStorage(String(playedCardText));
+      const sumOfAnswers = trueNbr + falseNbr;
+      if (sumOfAnswers) {
+        this.playingCards[gameModule.cardsIndex].cardStatisticParams.percent = String(
+          Math.round(trueNbr / (sumOfAnswers / 100)),
+        );
+      }
+      updateLineInLocalStorage(
+        this.playingCards[gameModule.cardsIndex].frontTextString,
+        this.playingCards[gameModule.cardsIndex].cardStatisticParams,
+      );
+
+      const lineForUpdate = setOfStatisticTableLines.find(
+        (element) => element.word === this.playingCards[gameModule.cardsIndex].frontTextString,
+      );
+      lineForUpdate?.updateLine(this.playingCards[gameModule.cardsIndex].frontTextString);
+
       setTimeout(() => this.playGame(), gameAudioDelay);
     }
   }
