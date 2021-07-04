@@ -86,6 +86,8 @@ export default class StatisticTable {
   }
 
   fillTableWithTr(): void {
+    this.indexNbr = 1;
+    while (setOfStatisticTableLines.length) setOfStatisticTableLines.pop();
     for (let i = 0; i < setOfCategories.length; i += 1) {
       const category = setOfCategories[i];
       let tr;
@@ -193,8 +195,12 @@ export default class StatisticTable {
     });
   }
 
-  renderSortedTable(): void {
+  clearTable(): void {
     while (this.table.childNodes.length > 1) this.table.lastChild?.remove();
+  }
+
+  renderSortedTable(): void {
+    this.clearTable();
     setOfStatisticTableLines.forEach((element) => {
       this.table.appendChild(element.tr);
     });

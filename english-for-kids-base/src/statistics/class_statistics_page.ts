@@ -2,6 +2,7 @@ import Button from '../shared/shared_classes/class_button';
 import createDomElement from '../shared/shared_functions/create-dom-element';
 import StatisticTable from './class_statistic_table';
 import statisticTable from './create_statistic_table';
+import { resetAllLinesInLocalStorage } from './functions_for_local_storage';
 
 const defaultStatisticPageParamms = {
   container: {
@@ -65,5 +66,16 @@ export default class StatisticsPage {
     this.container.appendChild(this.tablEl);
     this.buttonContainer.appendChild(this.buttonRepeatEl);
     this.buttonContainer.appendChild(this.buttonResetEl);
+
+    this.listenToResetButton();
+  }
+
+  listenToResetButton(): void {
+    this.buttonResetEl.addEventListener('click', (e) => {
+      console.log(e.target);
+      resetAllLinesInLocalStorage();
+      this.table.clearTable();
+      this.table.fillTableWithTr();
+    });
   }
 }
