@@ -7,6 +7,10 @@
     margin-bottom: 10px;
 }
 
+.all-categories-container.hidden {
+  display: none;
+}
+
 .category-container {
     margin-right: $card-gap;
     margin-bottom: $card-gap;

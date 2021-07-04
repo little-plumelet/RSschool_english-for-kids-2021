@@ -7,9 +7,25 @@
   display: flex;
   align-items: center;
 
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+
   h1 {
     @include h1;
     text-transform: capitalize;
+  }
+
+  .statistics-button {
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    background-color: rgb(163, 163, 163);
+
+      .button-image {
+        height: 90%;
+    }
   }
 }
 

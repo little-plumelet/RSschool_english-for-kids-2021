@@ -6,6 +6,10 @@
     align-self: center;
 }
 
+.statistics-container.hidden {
+   display: none;
+}
+
 .statistics-button-container {
     display: flex;
     justify-content: space-between;

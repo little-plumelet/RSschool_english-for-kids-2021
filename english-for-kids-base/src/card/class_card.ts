@@ -34,6 +34,8 @@ export default class Card {
 
   audioSrc: string;
 
+  imgSrc: string;
+
   gameMod: HTMLElement;
 
   gameModGessed: boolean;
@@ -58,6 +60,7 @@ export default class Card {
     this.backText = createDomElement(defaultCardParams.backText);
     this.backTextString = params.translation;
     this.audioSrc = params.audioAddres;
+    this.imgSrc = params.imgAddress;
     this.gameMod = createDomElement(defaultCardParams.gameMode);
     this.gameModGessed = false;
     this.cardStatisticParams = {};

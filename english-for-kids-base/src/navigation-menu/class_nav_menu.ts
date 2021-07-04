@@ -4,6 +4,8 @@ import setOfCategories from '../set-of-categories/set_of_categories';
 import BurgerMenuButton from '../shared/shared_classes/class_burger_menu_button';
 import NAV_CONSTANTS from '../shared/constants/nav_constants';
 import setOfNavItems from './set_of_navigation_items';
+import statisticsPage from '../statistics/create_statistics_page';
+import containerOfAllCategories from '../set-of-categories/create_container_of_all_categories';
 
 const { listOfMenuOffset } = NAV_CONSTANTS;
 
@@ -28,6 +30,11 @@ const defaultNavListParams = {
   categoriesLi: {
     tegName: 'li',
     classNames: ['nav-item', 'categories'],
+    attributes: [[]],
+  },
+  statisticsLi: {
+    tegName: 'li',
+    classNames: ['nav-item', 'statistics'],
     attributes: [[]],
   },
   cover: {
@@ -102,6 +109,8 @@ export default class NavMenu {
   listenToNav(): void {
     this.ul.addEventListener('click', (e) => {
       const id = (e.target as HTMLElement).getAttribute('id');
+      statisticsPage.container.classList.add('hidden');
+      containerOfAllCategories.classList.remove('hidden');
       setOfNavItems.forEach((element) => {
         element.classList.remove('activated');
         if (id === liOfAllcategories.idAttribute) {
