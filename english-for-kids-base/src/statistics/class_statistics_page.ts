@@ -98,8 +98,6 @@ export default class StatisticsPage {
       const set: StatisticTableLine[] = sortTableError('disc');
       const setOfdifficultWords: Card[] = [];
 
-      console.log('tmp', setOfStatisticTableLinesTmp);
-      console.log('set', set);
       for (let i = 0; i < cardsNbr; i += 1) {
         if (set[i].errorClicks) {
           let card;

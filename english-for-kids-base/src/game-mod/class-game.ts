@@ -324,7 +324,6 @@ export default class Game {
 
   playGame(): void {
     const index = getRandomIntInclusive(0, tmpAudioArray.length - 1);
-    console.log(tmpAudioArray);
     this.playingCard = this.playingCards.find(
       (element) => element.audioSrc === tmpAudioArray[index],
     );

@@ -21,7 +21,6 @@ function resetAllLinesInLocalStorage(): void {
     const item = localStorage.getItem(String(localStorage.key(i)));
     if (item) itemsArr.push(JSON.parse(item) as IstatisticLineParams);
   }
-  console.log('8888', itemsArr);
   for (let i = 0; i < itemsArr.length; i += 1) {
     itemsArr[i].errorsNbr = 0;
     itemsArr[i].gameClicks = 0;

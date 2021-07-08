@@ -8,7 +8,6 @@ export default function createsetOfCategories(setOfCategories: CategoryCard[]): 
   const cardCategoryData = {} as IcategoryCardData;
 
   categories.forEach((element) => {
-    console.log('elems =', element);
     cardCategoryData.categoryName = element.categoryName;
     cardCategoryData.title = element.title;
     cardCategoryData.imgAddress = element.imgAddress;
