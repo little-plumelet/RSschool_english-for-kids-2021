@@ -3,13 +3,16 @@ import createDomElement from '../shared/shared_functions/create-dom-element';
 import StatisticTableLine from './class_statistic_table_line';
 import { createLineInLocalStorage, getLineFromLocalStorage } from './functions_for_local_storage';
 import setOfStatisticTableLines from './setOfStatisticTableLines';
-import {
-  sortTableTrained,
-  sortTableGame,
-  sortTableError,
-  sortTablePercent,
-  sortTableNbr,
-} from './sort_functions/sort_functions';
+import sortTable from './sort_functions/sort_functions';
+import STAT_CONST from './statistic-constants';
+
+const {
+  trainClicks,
+  gameWrightClicks,
+  errorClicks,
+  percent,
+  nbr,
+} = STAT_CONST;
 
 const defaultTableParams = {
   table: {
@@ -85,7 +88,7 @@ export default class StatisticTable {
     this.listenToHeaderLine();
   }
 
-  fillTableWithTr(): void {
+  async fillTableWithTr(): Promise<void> {
     this.indexNbr = 1;
     while (setOfStatisticTableLines.length) setOfStatisticTableLines.pop();
     for (let i = 0; i < setOfCategories.length; i += 1) {
@@ -108,65 +111,36 @@ export default class StatisticTable {
     }
   }
 
-  handleTrainClick(element: HTMLElement): void {
+  sort(element: HTMLElement, key: keyof StatisticTableLine,
+    onSort: (sortOrder: string, key: keyof StatisticTableLine) => StatisticTableLine[]): void {
     let sortOrder = '';
 
     if (element.lastChild) sortOrder = toggleSortOrder(element.lastChild as HTMLElement);
-    const res = sortTableTrained(sortOrder);
+    const res = onSort(sortOrder, key);
     for (let i = 0; i < res.length; i += 1) {
       setOfStatisticTableLines.push(res[i]);
     }
     this.renderSortedTable();
+  }
+
+  handleTrainClick(element: HTMLElement): void {
+    this.sort(element, trainClicks, sortTable);
   }
 
   handleGameClick(element: HTMLElement): void {
-    let sortOrder = '';
-
-    if (element.lastChild) sortOrder = toggleSortOrder(element.lastChild as HTMLElement);
-    const res = sortTableGame(sortOrder);
-    for (let i = 0; i < res.length; i += 1) {
-      setOfStatisticTableLines.push(res[i]);
-    }
-    this.renderSortedTable();
+    this.sort(element, gameWrightClicks, sortTable);
   }
 
   handleErrorClick(element: HTMLElement): void {
-    let sortOrder = '';
-
-    if (element.lastChild) {
-      sortOrder = toggleSortOrder(element.lastChild as HTMLElement);
-    }
-    const res = sortTableError(sortOrder);
-    for (let i = 0; i < res.length; i += 1) {
-      setOfStatisticTableLines.push(res[i]);
-    }
-    this.renderSortedTable();
+    this.sort(element, errorClicks, sortTable);
   }
 
   handlePercentClick(element: HTMLElement): void {
-    let sortOrder = '';
-
-    if (element.lastChild) {
-      sortOrder = toggleSortOrder(element.lastChild as HTMLElement);
-    }
-    const res = sortTablePercent(sortOrder);
-    for (let i = 0; i < res.length; i += 1) {
-      setOfStatisticTableLines.push(res[i]);
-    }
-    this.renderSortedTable();
+    this.sort(element, percent, sortTable);
   }
 
   handleNbrClick(element: HTMLElement): void {
-    let sortOrder = '';
-
-    if (element.lastChild) {
-      sortOrder = toggleSortOrder(element.lastChild as HTMLElement);
-    }
-    const res = sortTableNbr(sortOrder);
-    for (let i = 0; i < res.length; i += 1) {
-      setOfStatisticTableLines.push(res[i]);
-    }
-    this.renderSortedTable();
+    this.sort(element, nbr, sortTable);
   }
 
   listenToHeaderLine(): void {

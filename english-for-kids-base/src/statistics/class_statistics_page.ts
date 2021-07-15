@@ -8,7 +8,7 @@ import StatisticTableLine from './class_statistic_table_line';
 import statisticTable from './create_statistic_table';
 import { resetAllLinesInLocalStorage } from './functions_for_local_storage';
 import setOfStatisticTableLines from './setOfStatisticTableLines';
-import { sortTableError } from './sort_functions/sort_functions';
+import sortTable from './sort_functions/sort_functions';
 import GAME_CONSTANTS from '../shared/constants/game-constants';
 // import CategoryCard from '../category-card/class_category_card';
 
@@ -95,7 +95,7 @@ export default class StatisticsPage {
 
       const setOfStatisticTableLinesTmp: StatisticTableLine[] = [];
       setOfStatisticTableLines.forEach((element) => setOfStatisticTableLinesTmp.push(element));
-      const set: StatisticTableLine[] = sortTableError('disc');
+      const set: StatisticTableLine[] = sortTable('disc', 'errorClicks');
       const setOfdifficultWords: Card[] = [];
 
       for (let i = 0; i < cardsNbr; i += 1) {
