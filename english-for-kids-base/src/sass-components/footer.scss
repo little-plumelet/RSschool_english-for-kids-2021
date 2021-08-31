@@ -1,0 +1,25 @@
+.footer {
+    border-top: 3px solid #b2b1b1;
+    background: url('../public/images/background_header.jpg');
+    background-position: bottom;
+    padding-bottom: 10px;
+    .wrapper {
+        display: flex;
+    }
+    .logo {
+        width: 100px;
+    }
+}
+
+.author-reference,
+.year,
+.course-reference {
+    @include footer-text;
+    text-decoration: none;
+    color: black;
+}
+
+.author-reference,
+.course-reference {
+    cursor: pointer;
+}

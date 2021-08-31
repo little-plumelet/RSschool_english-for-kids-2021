@@ -1,0 +1,34 @@
+.statistics-container {
+    width: $cards-container-width;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+}
+
+.statistics-container.hidden {
+   display: none;
+}
+
+.statistics-button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1350px) {
+    .statistics-container {
+        width: calc(1350px * 0.73);
+    }  
+  }
+  
+  @media screen and (min-width: 740px) and (max-width: 999px) {
+    .statistics-container {
+        width: calc(1000px * 0.73);
+    }
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 739px) {
+    .statistics-container {
+        width: calc(100vw * 0.9);
+    }
+  }

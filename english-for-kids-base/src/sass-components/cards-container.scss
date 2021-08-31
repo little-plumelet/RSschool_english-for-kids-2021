@@ -1,0 +1,28 @@
+.cards-container {
+    width: $cards-container-width;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // gap: $card-gap;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1350px) {
+    .cards-container {
+        width: calc(1350px * 0.73);
+    }
+}
+
+@media screen and (min-width: 740px) and (max-width: 999px) {
+    .cards-container {
+        width: calc(1000px * 0.73);
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 739px) {
+    .cards-container {
+        width: calc(100vw * 0.9);
+    }
+}

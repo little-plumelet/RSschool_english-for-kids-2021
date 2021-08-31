@@ -1,0 +1,21 @@
+.button-start-game,
+.button-repeat {
+    margin: 0 auto;
+    width: $cards-container-width;
+    font-size: 15px;
+    padding: 13px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: $game-color;
+    z-index: 1;
+}
+
+.button-start-game.hidden {
+    display: none;
+}
+
+.button-repeat {
+   width: 40%;
+   border-radius: 15px;
+}
+

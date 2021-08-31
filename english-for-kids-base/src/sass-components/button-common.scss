@@ -1,0 +1,19 @@
+.button {
+  width: $card-button-rotate-width;
+  height: $card-button-rotate-height;
+  margin: $card-button-rotate-margin;
+  margin-top: 0;
+  background-color: transparent;
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.button.hidden {
+  display: none;
+}

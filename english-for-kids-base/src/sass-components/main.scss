@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding-top: 10px;
+    width: $cards-container-width;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1350px) {
+    .wrapper {
+        width: calc(1350px * 0.73);
+    }
+}
+
+@media screen and (min-width: 740px) and (max-width: 999px) {
+    .wrapper {
+        width: calc(100vw * 0.9);
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 739px) {
+    .wrapper {
+        width: calc(100vw * 0.9);
+    }
+}

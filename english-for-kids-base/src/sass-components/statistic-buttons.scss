@@ -1,0 +1,22 @@
+.statistics-repeat-button,
+.statistics-reset-button {
+    width: $statisticButtonWidth;
+    background-color: $game-color;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    height: 40px;
+
+    .button-image {
+        height: 60%;
+    }
+
+    .reset-text,
+    .repeat-text {
+        padding-left: 20px;
+    }
+}
+
+.statistics-repeat-button:hover,
+.statistics-reset-button:hover {
+    background-color: rgba(250, 128, 114, 0.9)
+}
